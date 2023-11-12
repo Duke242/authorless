@@ -17,22 +17,22 @@ const Footer = () => {
               aria-current="page"
               className="flex gap-2 justify-center md:justify-start items-center"
             >
-              <Image
+              {/* <Image
                 src={logo}
                 alt={`${config.appName} logo`}
                 priority={true}
                 className="w-6 h-6"
                 width={24}
                 height={24}
-              />
-              <strong className="font-extrabold tracking-tight text-base md:text-lg">
+              /> */}
+              <strong className="font-extrabold tracking-tight text-base md:text-lg text-purple-600">
                 {config.appName}
               </strong>
             </Link>
 
-            <p className="mt-3 text-sm text-base-content/80">
+            {/* <p className="mt-3 text-sm text-base-content/80">
               {config.appDescription}
-            </p>
+            </p> */}
             <p className="mt-3 text-sm text-base-content/60">
               Copyright © {new Date().getFullYear()} - All rights reserved
             </p>
@@ -57,9 +57,9 @@ const Footer = () => {
                 <Link href="/#pricing" className="link link-hover">
                   Pricing
                 </Link>
-                <a href="/#" target="_blank" className="link link-hover">
+                {/* <a href="/#" target="_blank" className="link link-hover">
                   Affiliates
-                </a>
+                </a> */}
               </div>
             </div>
 

@@ -12,15 +12,13 @@ import config from "@/config";
 // You are an excellent lawyer.
 
 // I need your help to write a simple Terms & Services for my website. Here is some context:
-// - Website: https://shipfa.st
+// - Website: https://authorless.pro
 // - Name: ShipFast
-// - Contact information: marc@shipfa.st
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - Ownership: when buying a package, users can download code to create apps. They own the code but they do not have the right to resell it. They can ask for a full refund within 7 day after the purchase.
-// - User data collected: name, email and payment information
+// - Contact information: support@authorless.pro
+// - Description: AUthorless posting forum that allows ideas to thrive
 // - Non-personal data collection: web cookies
-// - Link to privacy-policy: https://shipfa.st/privacy-policy
-// - Governing Law: France
+// - Link to privacy-policy: https://authorless.pro/privacy-policy
+// - Governing Law: USA
 // - Updates to the Terms: users will be updated by email
 
 // Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
@@ -57,39 +55,44 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`
+**Terms of Service**
 
-Welcome to ShipFast!
+Effective Date: November 9, 2023
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+**Welcome to Authorless!**
 
-1. Description of ShipFast
+Authorless is an online posting forum that encourages open and anonymous discussions, providing a platform for ideas to thrive. By accessing or using Authorless, you agree to comply with and be bound by the following Terms of Service. Please read them carefully.
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+**1. Description of Authorless**
 
-2. Ownership and Usage Rights
+Authorless is an online platform designed to foster open and anonymous discussions, allowing users to engage in creative and intellectual discourse.
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+**2. Non-Personal Data Collection**
 
-3. User Data and Privacy
+We may collect non-personal data through the use of web cookies. For more details on our data collection, usage, and protection practices, please refer to our [Privacy Policy](https://authorless.pro/privacy-policy).
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+**3. Governing Law**
 
-4. Non-Personal Data Collection
+These Terms are governed by the laws of the United States of America.
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
+**4. Updates to the Terms**
 
-5. Governing Law
+We may update these Terms periodically. Users will be informed of any updates via email. It is your responsibility to review the revised Terms and continue using Authorless only if you agree to the latest version.
 
-These Terms are governed by the laws of France.
+**5. Ban Policy**
 
-6. Updates to the Terms
+The owner of Authorless reserves the right to ban any user from the platform for any reason whatsoever, without refund. This action may be taken to maintain the integrity of the community and ensure a positive experience for all users.
 
-We may update these Terms from time to time. Users will be notified of any changes via email.
+**Contact Us**
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+If you have any questions or concerns about these Terms or Authorless, please don't hesitate to contact us at support@authorless.pro.
 
-Thank you for using ShipFast!`}
+Thank you for using Authorless!
+
+---
+
+`}
         </pre>
       </div>
     </main>

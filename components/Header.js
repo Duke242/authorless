@@ -13,10 +13,10 @@ const links = [
     href: "/#pricing",
     label: "Pricing",
   },
-  {
-    href: "/#testimonials",
-    label: "Reviews",
-  },
+  // {
+  //   href: "/#testimonials",
+  //   label: "Reviews",
+  // },
   {
     href: "/#faq",
     label: "FAQ",
@@ -37,7 +37,7 @@ const Header = () => {
   }, [searchParams]);
 
   return (
-    <header className="bg-base-200">
+    <header className="bg-slate-800">
       <nav
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
@@ -45,20 +45,11 @@ const Header = () => {
         {/* Your logo/name on large screens */}
         <div className="flex lg:flex-1">
           <Link
-            className="flex items-center gap-2 shrink-0 "
+            className="flex items-center gap-2 shrink-0"
             href="/"
             title={`${config.appName} hompage`}
           >
-            <Image
-              src={logo}
-              alt={`${config.appName} logo`}
-              className="w-8"
-              placeholder="blur"
-              priority={true}
-              width={32}
-              height={32}
-            />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            <span className="font-extrabold text-2xl text-purple-600">{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
@@ -74,7 +65,7 @@ const Header = () => {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
-              stroke="currentColor"
+              stroke="white"
               className="w-6 h-6 text-base-content"
             >
               <path
@@ -92,7 +83,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover"
+              className="link link-hover text-base-200"
               title={link.label}
             >
               {link.label}
@@ -116,7 +107,7 @@ const Header = () => {
               title={`${config.appName} hompage`}
               href="/"
             >
-              <Image
+              {/* <Image
                 src={logo}
                 alt={`${config.appName} logo`}
                 className="w-8"
@@ -124,12 +115,12 @@ const Header = () => {
                 priority={true}
                 width={32}
                 height={32}
-              />
+              /> */}
               <span className="font-extrabold text-lg">{config.appName}</span>
             </Link>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5"
+              className="-m-2.5 rounded-md p-2.5 bg-color-primary"
               onClick={() => setIsOpen(false)}
             >
               <span className="sr-only">Close menu</span>

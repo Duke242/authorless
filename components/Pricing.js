@@ -7,12 +7,12 @@ import ButtonCheckout from "./ButtonCheckout";
 
 const Pricing = () => {
   return (
-    <section className="bg-base-200 overflow-hidden" id="pricing">
+    <section className="bg-slate-800 overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-5xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <p className="font-medium text-primary mb-8">Pricing</p>
-          <h2 className="font-bold text-3xl lg:text-5xl tracking-tight">
-            Save hours of repetitive code and ship faster!
+          <p className="font-medium text-purple-600 mb-8">Pricing</p>
+          <h2 className="font-bold text-3xl lg:text-5xl tracking-tight text-base-200">
+          Crafting a space where curiosity meets creativity, just for you. 
           </h2>
         </div>
 
@@ -57,20 +57,15 @@ const Pricing = () => {
                       </p>
                     </div>
                   )}
-                  <p className={`text-5xl tracking-tight font-extrabold`}>
-                    ${plan.price}
+                  <p className={`text-5xl tracking-tight font-extrabold text-center w-full`}>
+                    ${plan.price}<span className="text-xs text-base-content/60 uppercase font-semibold tracking-wide">/month</span>
                   </p>
-                  <div className="flex flex-col justify-end mb-[4px]">
-                    <p className="text-xs text-base-content/60 uppercase font-semibold">
-                      USD
-                    </p>
-                  </div>
                 </div>
                 {plan.features && (
                   <ul className="space-y-2.5 leading-relaxed text-base flex-1">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2">
-                        <svg
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -81,7 +76,7 @@ const Pricing = () => {
                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
                             clipRule="evenodd"
                           />
-                        </svg>
+                        </svg> */}
 
                         <span>{feature.name} </span>
                       </li>
@@ -91,9 +86,6 @@ const Pricing = () => {
                 <div className="space-y-2">
                   <ButtonCheckout priceId={plan.priceId} />
 
-                  <p className="flex items-center justify-center gap-2 text-sm text-center text-base-content/80 font-medium relative">
-                    Pay once. Access forever.
-                  </p>
                 </div>
               </div>
             </div>

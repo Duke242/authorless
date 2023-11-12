@@ -57,51 +57,35 @@ const PrivacyPolicy = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: 2023-08-25
+          {`**Authorless Terms of Service**
 
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
+*Effective Date: November 8, 2023*
 
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+These Terms of Service ("Terms") govern your use of the Authorless website located at https://authorless.pro (the "Website"). By accessing or using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Website.
 
-1. Information We Collect
+**1. Description of Authorless**
 
-1.1 Personal Data
+Authorless is a social forum that allows users to post content without revealing their authorship. The Website provides a platform for users to interact and share content anonymously.
 
-We collect the following personal information from you:
+**2. User Data Collection**
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+Authorless collects certain user data to provide its services, including your name, email address, and payment information as needed. This data is collected in accordance with our Privacy Policy, which can be found at https://authorless.pro/privacy-policy.
 
-1.2 Non-Personal Data
+**3. Non-Personal Data Collection**
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+Authorless may use web cookies to collect non-personal data, such as browsing and usage information, to improve the Website's functionality and user experience.
 
-2. Purpose of Data Collection
+**4. Governing Law**
 
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
+These Terms are governed by and construed in accordance with the laws of the United States of America.
 
-3. Data Sharing
+**5. Updates to the Terms**
 
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
+Authorless may update these Terms from time to time. Users will be notified of any changes via email or through a notice on the Website. It is your responsibility to review the updated Terms, and continued use of the Website after any changes indicates your acceptance of the updated Terms.
 
-4. Children's Privacy
+If you have any questions or concerns regarding these Terms, please contact us at support@authorless.pro.
 
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
-
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
-
-6. Contact Information
-
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
-
-Email: marc@shipfa.st
-
-For all other inquiries, please visit our Contact Us page on the Website.
-
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
+By using the Authorless Website, you agree to these Terms and our Privacy Policy. Please read both documents carefully.`}
         </pre>
       </div>
     </main>

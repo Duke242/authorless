@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    answer: <div className="space-y-2 leading-relaxed">A haven for the imaginative minds and the perpetually curious. No politics. No bots. No trolls.</div>,
   },
   {
     question: "Can I get a refund?",
@@ -22,7 +22,7 @@ const faqList = [
   {
     question: "I have another question",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <div className="space-y-2 leading-relaxed">Cool, contact us by email.</div>
     ),
   },
 ];
