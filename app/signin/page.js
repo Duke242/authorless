@@ -69,7 +69,7 @@ export default function Login() {
         </Link>
       </div>
       <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-12">
-        Sign-in to {config.appName}{" "}
+        Sign In
       </h1>
 
       <div className="space-y-8 max-w-xl mx-auto">
@@ -106,7 +106,7 @@ export default function Login() {
               />
             </svg>
           )}
-          Sign-up with Google
+          Sign up with Google
         </button>
 
         <div className="divider text-xs text-base-content/50 font-medium">
