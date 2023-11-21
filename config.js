@@ -45,7 +45,7 @@ const config = {
         isFeatured: false,
         priceId:
           process.env.NODE_ENV === "development"
-            ? "price_1O5KtcAxyNprDp7iftKnrrpw"
+            ? "price_1OCojmJey1A5GHJhJ4VLxBvj"
             : "price_456",
         // name: "Advanced",
         description: "Membership",

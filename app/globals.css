@@ -1,10 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css?family=Manrope");
 
 html,
 body {
   scroll-behavior: smooth !important;
+  font-family: "Manrope", system-ui, sans-serif;
 }
 
 /* It makes the HTML progress bar filling smooth when value change. */

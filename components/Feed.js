@@ -1,4 +1,6 @@
+import { data } from "autoprefixer";
 import Post from "./Post";
+import { createClient } from "@supabase/supabase-js";
 
 const Feed = async () => {
   const loremIpsum =
@@ -9,12 +11,13 @@ const Feed = async () => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const formattedDate = `${month}/${day}/${year}`;
+  let { data: posts, error } = await supabase.from("posts").select("*");
 
   return (
-    <div className="h-screen w-fit">
-      <Post title={"Title"} date={formattedDate} content={loremIpsum} />
-      <Post title={"Title"} date={formattedDate} content={loremIpsum} />
-      <Post title={"Title"} date={formattedDate} content={loremIpsum} />
+    <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-y-scroll">
+      {posts.map((post) => (
+        <Post title={post.title} date={post.createdAt} content={post.content} />
+      ))}
     </div>
   );
 };
