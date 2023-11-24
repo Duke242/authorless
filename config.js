@@ -5,7 +5,7 @@ const config = {
   appName: "Authorless",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
+    "Explore a realm where curiosity rules ideas are prized for merit,and authors stay hidden.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "authorless.pro",
   crisp: {

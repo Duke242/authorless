@@ -1,22 +1,26 @@
 import { data } from "autoprefixer";
 import Post from "./Post";
+
 import { createClient } from "@supabase/supabase-js";
 
-const Feed = async () => {
-  const loremIpsum =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const formattedDate = `${month}/${day}/${year}`;
+const Feed = async () => {
   let { data: posts, error } = await supabase.from("posts").select("*");
 
   return (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-y-scroll">
       {posts.map((post) => (
-        <Post title={post.title} date={post.createdAt} content={post.content} />
+        <Post
+          key={post.id}
+          title={post.title}
+          date={new Date(post.created_at).toLocaleDateString()}
+          content={post.content}
+          sources={post.sources}
+          opinion={post.opinion}
+        />
       ))}
     </div>
   );

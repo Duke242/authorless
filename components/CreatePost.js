@@ -23,6 +23,9 @@ const CreatePost = () => {
             Source (optional)
             <textarea className="h-20 p-2 rounded-xl shadow focus:outline-purple-400" />
           </label>
+          <button className="mx-auto rounded-full bg-purple-500 w-fit text-white p-2 mt-4 hover:shadow-2xl hover:bg-purple-300 transition">
+            Submit
+          </button>
         </form>
       </div>
     </div>
