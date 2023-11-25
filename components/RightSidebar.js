@@ -13,8 +13,8 @@ const RightSidebar = () => {
         <p className="text-left pr-8 text-gray-500">― Albert Einstein</p>
         <p className="mt-40 pt-40 text-purple-500 font-semibold">
           Immersed in the world of Authorless? Share the magic! Extend an
-          invitation to your friends, and together, let's unravel the wonders
-          within. Your invite adds to the adventure!
+          invitation to your friends, and together, let&apos;s unravel the
+          wonders within. Your invite adds to the adventure!
         </p>
       </div>
     </div>
