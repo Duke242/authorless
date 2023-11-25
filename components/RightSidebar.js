@@ -1,3 +1,4 @@
+import ClickCopy from "./ClickCopy";
 const RightSidebar = () => {
   return (
     <div className="w-1/3 flex flex-col h-full hidden lg:block">
@@ -16,6 +17,7 @@ const RightSidebar = () => {
           invitation to your friends, and together, let&apos;s unravel the
           wonders within. Your invite adds to the adventure!
         </p>
+        {/* <ClickCopy content={"Hellooo"} /> */}
       </div>
     </div>
   );

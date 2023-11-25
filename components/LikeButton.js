@@ -83,7 +83,8 @@ const LikeButton = ({ postId }) => {
       } transition`}
       onClick={handleLikeClick}
     >
-      {liked ? "Unlike" : "Like"} ({likeCount})
+      {/* {liked ? "Unlike" : "Like"}
+       */}
     </button>
   );
 };

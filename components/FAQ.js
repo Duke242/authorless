@@ -20,7 +20,7 @@ const faqList = [
     answer: (
       <p>
         Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
+        by email. Email: support@authorless.pro
       </p>
     ),
   },

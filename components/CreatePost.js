@@ -1,5 +1,6 @@
 "use client";
 import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -24,7 +25,9 @@ const CreatePost = () => {
         <h1 className="text-center font-semibold text-purple-500">Compose</h1>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <label className="flex flex-col">
-            Title (optional)
+            <div>
+              Title <span className="text-gray-400">(optional)</span>
+            </div>
             <input
               name="title"
               type="text"
@@ -43,7 +46,9 @@ const CreatePost = () => {
             />
           </label>
           <label className="flex flex-col">
-            Your Thoughts (optional)
+            <div>
+              Opinion <span className="text-gray-400">(optional)</span>
+            </div>
             <textarea
               name="opinion"
               value={opinion}
@@ -52,7 +57,9 @@ const CreatePost = () => {
             />
           </label>
           <label className="flex flex-col">
-            Source (optional)
+            <div>
+              Source <span className="text-gray-400">(optional)</span>
+            </div>
             <textarea
               name="source"
               value={source}
