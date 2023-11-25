@@ -27,16 +27,16 @@ const Landing = async () => {
           and authors stay hidden.
         </span>
       </h1>
-      {session ? null : (
+      {/* {session ? null : (
         <Link
           href="/#pricing"
           className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-2xl bg-transparent border border-purple-500 border-solid border-2 px-8 mt-10"
         >
           Join
         </Link>
-      )}
+      )} */}
       {session ? <DashboardButton /> : null}
-      {session && profiles.has_access ? null : (
+      {session && !profiles.has_access && (
         <Link
           href="/#pricing"
           className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-2xl bg-transparent border border-purple-500 border-solid border-2 px-8 mt-10"

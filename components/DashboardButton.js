@@ -33,7 +33,7 @@ const DashboardButton = ({ text = "Go To Dashboard", extraStyle }) => {
   return (
     <button
       onClick={handleClick}
-      className="text-white mt-4 p-4 bg-purple-500 w-fit mx-auto rounded-full font-bold"
+      className="text-white mt-4 p-4 bg-purple-500 w-fit mx-auto rounded-full font-bold hover:bg-purple-800 transition"
     >
       {text}
     </button>
