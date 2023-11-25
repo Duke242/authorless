@@ -36,7 +36,7 @@ const Landing = async () => {
         </Link>
       )}
       {session ? <DashboardButton /> : null}
-      {profiles.has_access ? null : (
+      {session && profiles.has_access ? null : (
         <Link
           href="/#pricing"
           className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-2xl bg-transparent border border-purple-500 border-solid border-2 px-8 mt-10"
