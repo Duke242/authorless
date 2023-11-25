@@ -1,3 +1,4 @@
+"use client";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -5,10 +6,15 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const CreatePost = () => {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [opinion, setOpinion] = useState("");
+  const [source, setSource] = useState("");
+
   async function handleSubmit() {
     const { data, error } = await supabase
       .from("posts")
-      .insert([{ title: title, other_column: "otherValue" }])
+      .insert([{ title: title, body: body, opinion: opinion, source: source }])
       .select();
   }
 
@@ -16,12 +22,14 @@ const CreatePost = () => {
     <div className="flex h-screen w-screen items-center justify-center bg-[rgb(232,231,237)]">
       <div className="h-fit w-1/2 justify-center p-5 rounded-xl ml-5">
         <h1 className="text-center font-semibold text-purple-500">Compose</h1>
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={handleSubmit}>
           <label className="flex flex-col">
             Title (optional)
             <input
               name="title"
               type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className="rounded shadow pl-2 h-10 focus:outline-purple-400"
             />
           </label>
@@ -29,6 +37,8 @@ const CreatePost = () => {
             Body
             <textarea
               name="body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
               className="p-2 h-40 rounded-xl shadow focus:outline-purple-400"
             />
           </label>
@@ -36,6 +46,8 @@ const CreatePost = () => {
             Your Thoughts (optional)
             <textarea
               name="opinion"
+              value={opinion}
+              onChange={(e) => setOpinion(e.target.value)}
               className="h-40 p-2 rounded-xl shadow focus:outline-purple-400"
             />
           </label>
@@ -43,6 +55,8 @@ const CreatePost = () => {
             Source (optional)
             <textarea
               name="source"
+              value={source}
+              onChange={(e) => setSource(e.target.value)}
               className="h-20 p-2 rounded-xl shadow focus:outline-purple-400"
             />
           </label>

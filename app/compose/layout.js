@@ -17,7 +17,7 @@ export default async function LayoutPrivate({ children }) {
     .from("profiles")
     .select("has_access");
 
-  // profiles.has_access = true;
+  profiles.has_access = true;
 
   if (!profiles.has_access) {
     redirect(config.auth.loginUrl);
