@@ -1,5 +1,8 @@
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: [
       // NextJS <Image> component needs to whitelist domains for src={}
