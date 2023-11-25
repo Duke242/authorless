@@ -3,6 +3,8 @@ import config from "@/config";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const dynamic = "force-dynamic";
+
 // This is a server-side component to ensure the user is logged in.
 // If not, it will redirect to the login page.
 // It's applied to all subpages of /dashboard in /app/dashboard/*** pages
@@ -15,7 +17,7 @@ export default async function LayoutPrivate({ children }) {
     .from("profiles")
     .select("has_access");
 
-  profiles.has_access = true;
+  // profiles.has_access = true;
 
   if (!profiles.has_access) {
     redirect(config.auth.loginUrl);
