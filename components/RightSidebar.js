@@ -1,4 +1,4 @@
-import ClickCopy from "./ClickCopy";
+// import ClickCopy from "./ClickCopy";
 const RightSidebar = () => {
   return (
     <div className="w-1/3 flex flex-col h-full hidden lg:block">
