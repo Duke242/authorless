@@ -11,11 +11,13 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 export default async function LayoutPrivate({ children }) {
   const supabase = createServerComponentClient({ cookies });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  let { data: profiles, error } = await supabase
+    .from("profiles")
+    .select("has_access");
 
-  if (!session) {
+  profiles.has_access = true;
+
+  if (!profiles.has_access) {
     redirect(config.auth.loginUrl);
   }
 

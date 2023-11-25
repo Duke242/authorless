@@ -12,7 +12,7 @@ const Pricing = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <p className="font-medium text-purple-600 mb-8">Pricing</p>
           <h2 className="font-bold text-3xl lg:text-5xl tracking-tight text-base-200">
-          Crafting a space where curiosity meets creativity, just for you. 
+            Crafting a space where curiosity meets creativity, just for you.
           </h2>
         </div>
 
@@ -57,8 +57,13 @@ const Pricing = () => {
                       </p>
                     </div>
                   )}
-                  <p className={`text-5xl tracking-tight font-extrabold text-center w-full`}>
-                    ${plan.price}<span className="text-xs text-base-content/60 uppercase font-semibold tracking-wide">/month</span>
+                  <p
+                    className={`text-5xl tracking-tight font-extrabold text-center w-full`}
+                  >
+                    ${plan.price}
+                    <span className="text-xs text-base-content/60 uppercase font-semibold tracking-wide">
+                      /month
+                    </span>
                   </p>
                 </div>
                 {plan.features && (
@@ -85,7 +90,6 @@ const Pricing = () => {
                 )}
                 <div className="space-y-2">
                   <ButtonCheckout priceId={plan.priceId} />
-
                 </div>
               </div>
             </div>
