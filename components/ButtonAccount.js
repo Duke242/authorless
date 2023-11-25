@@ -6,7 +6,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import apiClient from "@/libs/api";
 
-// A button to show user some account actions
+// A button to show user some account actions.
 //  1. Billing: open a Stripe Customer Portal to manage their billing (cancel subscription, update payment method, etc.).
 //     You have to manually activate the Customer Portal in your Stripe Dashboard (https://dashboard.stripe.com/test/settings/billing/portal)
 //     This is only available if the customer has a customerId (they made a purchase previously)
