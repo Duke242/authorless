@@ -16,8 +16,11 @@ const Feed = async () => {
       label: "Pricing",
     },
   ];
-  let { data: posts, error } = await supabase.from("posts").select("*");
-
+  let { data: posts, error } = await supabase.from("posts").select(`
+    *,
+    likes (post_id,user_id)
+  `);
+  console.log(posts);
   let { data: profiles, e } = await supabase
     .from("profiles")
     .select("has_access");
@@ -25,27 +28,13 @@ const Feed = async () => {
   return profiles.has_access ? (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
       {posts.map((post) => (
-        <Post
-          key={post.id}
-          title={post.title}
-          date={new Date(post.created_at).toLocaleDateString()}
-          content={post.content}
-          sources={post.sources}
-          opinion={post.opinion}
-        />
+        <Post key={post.id} {...{ post }} />
       ))}
     </div>
   ) : (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">
       {posts.slice(0, 2).map((post) => (
-        <Post
-          key={post.id}
-          title={post.title}
-          date={new Date(post.created_at).toLocaleDateString()}
-          content={post.content}
-          sources={post.sources}
-          opinion={post.opinion}
-        />
+        <Post key={post.id} {...{ post }} />
       ))}
       <h1 className="mx-auto text-purple-700 w-max text-3xl">
         Subscribe to see more posts

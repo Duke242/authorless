@@ -22,3 +22,11 @@ progress::-webkit-progress-value {
     @apply !capitalize;
   }
 }
+
+button.liked {
+  background-color: green;
+}
+
+button.unliked {
+  background-color: red;
+}
