@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import { like } from "../libs/LikeAction";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { bookmark } from "@/libs/BookmarkAction";
 
 // export const dynamic = "force-dynamic";
 
@@ -22,6 +23,11 @@ const Post = async ({
   } = await supabase.auth.getSession();
 
   const likePost = like.bind(null, { postId: id, userId: session.user.id });
+
+  const bookmarkPost = bookmark.bind(null, {
+    postId: id,
+    userId: session.user.id,
+  });
 
   const userLikes = likes.some(
     ({ user_id: userId }) => userId === session.user.id
@@ -54,6 +60,9 @@ const Post = async ({
             >
               Like
             </button>
+          </form>
+          <form action={bookmarkPost}>
+            <button className="btn-primary rounded p-1 mt-2">Bookmark</button>
           </form>
           <p className="text-gray-500 text-sm mx-auto pt-2">{date}</p>
         </div>

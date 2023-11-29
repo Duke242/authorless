@@ -27,8 +27,6 @@ const CreatePost = async () => {
             <input
               name="title"
               type="text"
-              // value={title}
-              // onChange={(e) => setTitle(e.target.value)}
               className="rounded shadow pl-2 h-10 focus:outline-purple-400"
             />
           </label>
@@ -36,8 +34,6 @@ const CreatePost = async () => {
             Body
             <textarea
               name="body"
-              // value={body}
-              // onChange={(e) => setBody(e.target.value)}
               className="p-2 h-40 rounded-xl shadow focus:outline-purple-400"
             />
           </label>
@@ -47,8 +43,6 @@ const CreatePost = async () => {
             </div>
             <textarea
               name="opinion"
-              // value={opinion}
-              // onChange={(e) => setOpinion(e.target.value)}
               className="h-40 p-2 rounded-xl shadow focus:outline-purple-400"
             />
           </label>
@@ -58,8 +52,6 @@ const CreatePost = async () => {
             </div>
             <textarea
               name="source"
-              // value={source}
-              // onChange={(e) => setSource(e.target.value)}
               className="h-20 p-2 rounded-xl shadow focus:outline-purple-400"
             />
           </label>

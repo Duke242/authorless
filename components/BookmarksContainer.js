@@ -1,36 +1,45 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { createClient } from "@supabase/supabase-js";
 
-const MyPostsFeed = async () => {
-  const supabaseSession = createServerComponentClient({ cookies });
-
+const BookmarksContainer = async () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const {
-    data: { session },
-  } = await supabaseSession.auth.getSession();
+  let { data: bookmarks, error: bookmarksError } = await supabase
+    .from("bookmarks")
+    .select("post_id");
 
-  let { data: posts, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("user_id", session.user.id);
-
-  if (error) {
-    console.error("Error fetching posts:", error);
+  if (bookmarksError) {
+    console.error("Error getting bookmarks:", bookmarksError);
     return null; // or handle the error in a different way
   }
 
-  // console.log({ NEW: posts });
+  if (!bookmarks || bookmarks.length === 0) {
+    // Handle case where there are no bookmarks
+    return (
+      <p className="h-screen w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
+        No bookmarks found.
+      </p>
+    );
+  }
 
-  if (!posts) {
-    return <div>There are no posts.</div>;
+  let { data: posts, error: postsError } = await supabase
+    .from("posts")
+    .select("*")
+    .in(
+      "id",
+      bookmarks.map((bookmark) => bookmark.post_id)
+    );
+
+  console.log({ posts });
+
+  if (postsError) {
+    console.error("Error fetching posts:", postsError);
+    return null; // or handle the error in a different way
   }
 
   return (
-    <div className="h-max w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
+    <div className="h-screen w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
       {posts.map((post) => (
         <div
           className="p-6 mb-6 mt-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]"
@@ -57,4 +66,4 @@ const MyPostsFeed = async () => {
   );
 };
 
-export default MyPostsFeed;
+export default BookmarksContainer;

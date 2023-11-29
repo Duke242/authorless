@@ -1,19 +1,18 @@
 import { createClient } from "@supabase/supabase-js";
 
-export async function feedback(userId, formData) {
+export async function bookmark(userId, postId) {
   "use server";
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const { data, error } = await supabase
-    .from("feedback")
-    .insert([{ user_id: userId, content: formData.get("content") }])
-    .select();
-  if (error) {
-    throw error;
-  }
+  // console.log({ userId: userId.userId, postId: userId.postId });
 
-  console.log({ data });
+  const { data, error } = await supabase
+    .from("bookmarks")
+    .insert([{ user_id: userId.userId, post_id: userId.postId }])
+    .select();
+
+  console.log("bookmark", { data });
 }
