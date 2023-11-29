@@ -4,6 +4,8 @@ import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+
 const font = Inter({ subsets: ["latin"] });
 
 export const viewport = {
