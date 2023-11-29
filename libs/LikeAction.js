@@ -1,4 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
+import { revalidatePath } from "next/cache";
+
+export const revalidate = 0;
+
 export async function like({ postId, userId }, formData) {
   "use server";
 
@@ -7,16 +11,14 @@ export async function like({ postId, userId }, formData) {
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const setLike = async (likes) => {
-    console.log({ likes });
-    if (likes) {
-      console.log("inserting");
+    if (likes === false) {
       const { data, error } = await supabase
         .from("likes")
         .insert([{ post_id: postId, user_id: userId }])
         .select();
 
       if (error) throw error;
-    } else {
+    } else if (likes === true) {
       const { data, error } = await supabase
         .from("likes")
         .delete()
@@ -28,18 +30,16 @@ export async function like({ postId, userId }, formData) {
   };
 
   try {
-    const { count, error } = await supabase
+    const { count, data, error } = await supabase
       .from("likes")
       .select("*", { count: "exact", head: true })
-      .eq("post_id", postId)
-      .eq("user_id", userId);
+      .match({ user_id: userId })
+      .match({ post_id: postId });
+    revalidatePath("/dashboard");
 
     if (error) throw error;
-
     const liked = count > 0;
-    // console.log({ liked, data, userId, postId });
-    console.log({ liked, count, postId, userId });
-    await setLike(!liked);
+    await setLike(liked);
   } catch (e) {
     console.error({ e });
   }

@@ -9,6 +9,10 @@ import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
+export const fetchCache = "force-no-store"; // to page.js
+
+export const revalidate = 0;
+
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
 

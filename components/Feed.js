@@ -1,15 +1,21 @@
-import { data } from "autoprefixer";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import Post from "./Post";
 
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
-import ButtonCheckout from "./ButtonCheckout";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const Feed = async () => {
+  const supabaseSession = createServerComponentClient({ cookies });
+
+  const {
+    data: { session },
+  } = await supabaseSession.auth.getSession();
+
   const links = [
     {
       href: "/#pricing",
@@ -20,12 +26,15 @@ const Feed = async () => {
     *,
     likes (post_id,user_id)
   `);
-  console.log(posts);
+
   let { data: profiles, e } = await supabase
     .from("profiles")
-    .select("has_access");
+    .select("*")
+    .eq("id", session.user.id);
 
-  return profiles.has_access ? (
+  const access = profiles[0].has_access;
+
+  return access ? (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
       {posts.map((post) => (
         <Post key={post.id} {...{ post }} />

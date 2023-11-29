@@ -1,4 +1,4 @@
-const PostForm = ({ post }) => {
+const PostForm = () => {
   <form className="flex flex-col" action={postUser}>
     <label className="flex flex-col">
       <div>

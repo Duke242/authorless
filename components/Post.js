@@ -3,12 +3,14 @@ import { like } from "../libs/LikeAction";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
+// export const dynamic = "force-dynamic";
+
+export const revalidate = 0;
+
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
 });
-const loremIpsum =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 const Post = async ({
   post: { title, date, content, sources, opinion, id, likes },
@@ -19,8 +21,8 @@ const Post = async ({
     data: { session },
   } = await supabase.auth.getSession();
 
-  console.log({ likes });
   const likePost = like.bind(null, { postId: id, userId: session.user.id });
+
   const userLikes = likes.some(
     ({ user_id: userId }) => userId === session.user.id
   );
@@ -30,7 +32,8 @@ const Post = async ({
       <h2 className="font-bold text-left text-purple-500 mb-3 font-sans">
         {title}
       </h2>
-      <p className={`${manrope.variable} font-sans`}>{content}</p>
+      {/* <p className={`${manrope.variable} font-sans`}>{content}</p> */}
+      <p>{content}</p>
       {opinion && (
         <>
           <h3 className="mt-4 mb-4 text-purple-500 font-semibold border-t-2 border-purple-300 w-fit border-solid">
@@ -49,7 +52,6 @@ const Post = async ({
               `}
               type="submit"
             >
-              {/* <LikeButton /> */}
               Like
             </button>
           </form>

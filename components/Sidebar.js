@@ -37,7 +37,7 @@ const Sidebar = () => {
               Home
             </li>
           </Link>
-          <Link href={""}>
+          <Link href={"myposts"}>
             <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
               My Posts
             </li>
@@ -47,7 +47,7 @@ const Sidebar = () => {
               Bookmarks
             </li>
           </Link>
-          <Link href={""}>
+          <Link href={"feedback"}>
             <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
               Give Feedback
             </li>
