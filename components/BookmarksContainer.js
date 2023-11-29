@@ -45,13 +45,13 @@ const BookmarksContainer = async () => {
           className="p-6 mb-6 mt-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]"
           key={post.id}
         >
-          <h2 className="font-bold text-left text-purple-500 mb-3 font-sans">
+          <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
             {post.title}
           </h2>
           <p>{post.content}</p>
           {post.opinion && (
             <div>
-              <h3 className="mt-4 mb-4 text-purple-500 font-semibold border-t-2 border-purple-300 w-fit border-solid">
+              <h3 className="mt-4 mb-4 text-purple-500 font-normal border-t-2 border-purple-300 w-fit border-solid">
                 Opinion
               </h3>
               <p className="mb-2">{post.opinion}</p>

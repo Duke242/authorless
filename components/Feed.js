@@ -24,7 +24,8 @@ const Feed = async () => {
   ];
   let { data: posts, error } = await supabase.from("posts").select(`
     *,
-    likes (post_id,user_id)
+    likes (post_id,user_id),
+    bookmarks (post_id,user_id)
   `);
 
   let { data: profiles, e } = await supabase

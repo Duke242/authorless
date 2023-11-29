@@ -1,18 +1,45 @@
 import { createClient } from "@supabase/supabase-js";
+import { revalidatePath } from "next/cache";
 
 export async function bookmark(userId, postId) {
   "use server";
-
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  // console.log({ userId: userId.userId, postId: userId.postId });
+  const setBookmark = async (bookmark) => {
+    if (bookmark === false) {
+      let { data: bookmarks, error } = await supabase
+        .from("bookmarks")
+        .insert([{ post_id: userId.postId, user_id: userId.userId }])
+        .select();
+      if (error) throw error;
+    } else if (bookmark === true) {
+      const { data, error } = await supabase
+        .from("bookmarks")
+        .delete()
+        .eq("user_id", userId.userId)
+        .eq("post_id", userId.postId);
 
-  const { data, error } = await supabase
-    .from("bookmarks")
-    .insert([{ user_id: userId.userId, post_id: userId.postId }])
-    .select();
+      if (error) throw error;
+    }
+  };
 
-  console.log("bookmark", { data });
+  try {
+    const { count, data, error } = await supabase
+      .from("bookmarks")
+      .select("*", { count: "exact", head: true })
+      .match({ user_id: userId.userId, post_id: userId.postId });
+    if (error) {
+      console.log("Error");
+    }
+
+    revalidatePath("/dashboard");
+
+    const bookmarked = count > 0;
+
+    await setBookmark(bookmarked);
+  } catch (error) {
+    console.error(error);
+  }
 }
