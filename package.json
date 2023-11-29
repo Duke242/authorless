@@ -22,7 +22,6 @@
     "next-sitemap": "^4.2.2",
     "nextjs-toploader": "^1.4.2",
     "nodemailer": "^6.9.4",
-    "react-dom": "^0.0.0-experimental-6c7b41da3-20231123",
     "react-hot-toast": "^2.4.1",
     "react-syntax-highlighter": "^15.5.0",
     "react-tooltip": "^5.21.1",
