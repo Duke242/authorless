@@ -2,16 +2,23 @@ import { like } from "../libs/LikeAction";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { bookmark } from "@/libs/BookmarkAction";
-import { FcLikePlaceholder } from "react-icons/fc";
-import { FcLike } from "react-icons/fc";
 import { FaBookmark } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
+import styles from "@/styles/Post.module.css";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const supabase1 = createClient(supabaseUrl, supabaseKey);
+const supabase1 = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false,
+    detectSessionInUrl: false,
+  },
+});
+
+console.log({ styles });
 
 const Post = async ({
   post: { title, date, content, sources, opinion, id, likes },
@@ -45,7 +52,7 @@ const Post = async ({
   );
 
   return (
-    <div className="p-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
+    <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
       <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
         {title}
       </h2>
@@ -61,22 +68,19 @@ const Post = async ({
       <div className="flex pt-3">
         <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
           <form action={likePost}>
-            <button className="flex mx-auto" type="submit">
-              {userLikes ? (
-                <FcLike color="blue" size={30} />
-              ) : (
-                <FcLikePlaceholder size={30} />
-              )}
-            </button>
+            <button
+              className={`${styles.like} flex mx-auto ${
+                userLikes ? styles.liked : "unliked"
+              }`}
+              type="submit"
+            ></button>
           </form>
           <form action={bookmarkPost}>
-            <button className="mt-2">
-              {userBookmarks ? (
-                <FaBookmark size={20} />
-              ) : (
-                <FaRegBookmark size={20} />
-              )}
-            </button>
+            <button
+              className={`${styles.bookmark} flex mx-auto ${
+                userBookmarks ? styles.bookmarked : "noBookmark"
+              }`}
+            ></button>
           </form>
           <p className="text-gray-500 text-sm mx-auto pt-2">{date}</p>
         </div>
