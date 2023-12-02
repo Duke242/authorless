@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { ToastContainer } from "react-toastify";
 
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });

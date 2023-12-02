@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import config from "@/config";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { toast } from "react-hot-toast";
 
 // This is a server-side component to ensure the user is logged in.
 // If not, it will redirect to the login page.
@@ -11,14 +12,28 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 export default async function LayoutPrivate({ children }) {
   const supabase = createServerComponentClient({ cookies });
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect(config.auth.loginUrl);
+  }
+
+  const userId = session.user.id;
+
+  console.log({ userId });
+
   let { data: profiles, error } = await supabase
     .from("profiles")
-    .select("has_access");
+    .select("has_access")
+    .eq("id", userId);
 
-  profiles.has_access = true;
+  const access = profiles?.[0]?.has_access;
+  console.log({ access });
 
-  if (!profiles.has_access) {
-    redirect(config.auth.loginUrl);
+  if (access !== true) {
+    redirect(config.auth.callbackUrl);
   }
 
   return <>{children}</>;

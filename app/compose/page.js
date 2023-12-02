@@ -3,7 +3,7 @@ import Sidebar from "@/components/Sidebar";
 
 const createPost = () => {
   return (
-    <div>
+    <div className="bg-[rgb(232,231,237)] h-screen">
       <Sidebar />
       <CreatePost />
     </div>

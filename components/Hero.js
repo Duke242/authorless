@@ -24,9 +24,18 @@ const Hero = () => {
         <h1 className="w-full font-normal lg:text-9xl tracking-tight md:-mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-violet-600 to-sky-900">
           Ideas live here.
         </h1>
-        <p className="text-2xl opacity-80 leading-relaxed text-center text-black">
-          Embark on a journey within a forum where every post stands as an entity of its own, devoid of authorship, enabling your ideas to resonate independently. Engage in a space where insights, questions, and reflections are shared without revealing the author, inviting you to explore a realm of diverse thoughts from anonymous contributors.<br/> <span className="text-purple-600 font-bold text-l">In this unique world of ideas, merit takes center stage, outshining the confines of personal identity.</span>
-         </p>
+        <ol class="list-disc list-inside space-y-2 text-3xl text-center text-purple-700 font-semibold">
+          <li class="mb-2">
+            Liberate your mind: Unchain creativity for limitless ideas.
+          </li>
+          <li class="mb-2">
+            Unshackle your imagination: Let creativity redefine possibilities.
+          </li>
+          <li class="mb-2">
+            Fuel innovation: Creativity propels progress and fosters a dynamic,
+            ever-evolving mindset.
+          </li>
+        </ol>
         {/* <div className="w-full flex justify-center">______
           <button className="'btn btn-primary btn-wide">
             Subscribe

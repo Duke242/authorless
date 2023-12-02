@@ -1,3 +1,4 @@
+"use server";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Post from "./Post";
@@ -23,32 +24,40 @@ const Feed = async () => {
     },
   ];
   let { data: posts, error } = await supabase.from("posts").select(`
-    *,
-    likes (post_id,user_id),
-    bookmarks (post_id,user_id)
+  *,
+  likes (post_id,user_id),
+  bookmarks (post_id,user_id)
   `);
+
+  const slicedPosts = posts.slice(0, 2);
 
   let { data: profiles, e } = await supabase
     .from("profiles")
     .select("*")
     .eq("id", session.user.id);
 
-  const access = profiles[0].has_access;
+  const access = profiles?.[0]?.has_access;
 
   return access ? (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
-      {posts.map((post) => (
-        <Post key={post.id} {...{ post }} />
-      ))}
+      {posts.length === 0 ? (
+        <div className="text-center p-4">No posts available</div>
+      ) : (
+        posts.map((post) => <Post key={post.id} {...post} />)
+      )}
     </div>
   ) : (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">
-      {posts.slice(0, 2).map((post) => (
-        <Post key={post.id} {...{ post }} />
-      ))}
-      <h1 className="mx-auto text-purple-700 w-max text-3xl">
-        Subscribe to see more posts
+      {slicedPosts.length === 0 ? (
+        <div className="text-center p-4">No posts available</div>
+      ) : (
+        slicedPosts.map((post) => <Post key={post.id} {...post} />)
+      )}
+
+      <h1 className="mx-auto text-purple-700 w-max text-3xl text-center">
+        Subscribe to see more posts <br /> and access other pages.
       </h1>
+
       <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center bg-purple-600 w-40 rounded mx-auto mt-5">
         {links.map((link) => (
           <Link

@@ -2,8 +2,6 @@ import { like } from "../libs/LikeAction";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { bookmark } from "@/libs/BookmarkAction";
-import { FaBookmark } from "react-icons/fa";
-import { FaRegBookmark } from "react-icons/fa";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
 import styles from "@/styles/Post.module.css";
@@ -56,14 +54,14 @@ const Post = async ({
       <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
         {title}
       </h2>
-      <p>{content}</p>
+      <p className="break-words">{content}</p>
       {opinion && (
-        <>
+        <div>
           <h3 className="mt-4 mb-4 text-purple-500 font-normal border-t-2 border-purple-300 w-fit border-solid">
             Opinion
           </h3>
-          <p className="mb-2">{opinion}</p>
-        </>
+          <p className="mb-2 break-words">{opinion}</p>
+        </div>
       )}
       <div className="flex pt-3">
         <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
@@ -85,7 +83,9 @@ const Post = async ({
           <p className="text-gray-500 text-sm mx-auto pt-2">{date}</p>
         </div>
         {sources && (
-          <div className="rounded pt-1 text-gray-400 ml-4">{sources}</div>
+          <div className="rounded pt-1 text-gray-400 ml-4 break-words">
+            {sources}
+          </div>
         )}
       </div>
     </div>
