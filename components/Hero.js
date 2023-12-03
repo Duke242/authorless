@@ -24,14 +24,14 @@ const Hero = () => {
         <h1 className="w-full font-normal lg:text-9xl tracking-tight md:-mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-violet-600 to-sky-900">
           Ideas live here.
         </h1>
-        <ol class="list-disc list-inside space-y-2 text-3xl text-center text-purple-700 font-semibold">
-          <li class="mb-2">
+        <ol className="list-disc list-inside space-y-2 text-3xl text-center text-purple-700 font-semibold">
+          <li className="mb-2">
             Liberate your mind: Unchain creativity for limitless ideas.
           </li>
-          <li class="mb-2">
+          <li className="mb-2">
             Unshackle your imagination: Let creativity redefine possibilities.
           </li>
-          <li class="mb-2">
+          <li className="mb-2">
             Fuel innovation: Creativity propels progress and fosters a dynamic,
             ever-evolving mindset.
           </li>

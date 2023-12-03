@@ -15,12 +15,11 @@ const supabase1 = createClient(supabaseUrl, supabaseKey, {
     detectSessionInUrl: false,
   },
 });
-
-console.log({ styles });
-
 const Post = async ({
   post: { title, date, content, sources, opinion, id, likes },
 }) => {
+  console.log({ styles });
+
   const supabase = createServerComponentClient({ cookies });
 
   const {
@@ -51,9 +50,11 @@ const Post = async ({
 
   return (
     <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
-      <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
-        {title}
-      </h2>
+      {title && (
+        <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
+          {title}
+        </h2>
+      )}
       <p className="break-words">{content}</p>
       {opinion && (
         <div>

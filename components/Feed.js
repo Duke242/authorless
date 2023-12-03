@@ -29,7 +29,7 @@ const Feed = async () => {
   bookmarks (post_id,user_id)
   `);
 
-  const slicedPosts = posts.slice(0, 2);
+  const postCount = posts.length;
 
   let { data: profiles, e } = await supabase
     .from("profiles")
@@ -40,18 +40,18 @@ const Feed = async () => {
 
   return access ? (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
-      {posts.length === 0 ? (
+      {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
-        posts.map((post) => <Post key={post.id} {...post} />)
+        posts.map((post) => <Post key={post.id} {...{ post }} />)
       )}
     </div>
   ) : (
     <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">
-      {slicedPosts.length === 0 ? (
+      {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
-        slicedPosts.map((post) => <Post key={post.id} {...post} />)
+        posts.slice(0, 2).map((post) => <Post key={post.id} {...{ post }} />)
       )}
 
       <h1 className="mx-auto text-purple-700 w-max text-3xl text-center">
