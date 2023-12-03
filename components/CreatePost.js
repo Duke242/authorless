@@ -55,6 +55,7 @@ const CreatePost = () => {
             Body
             <textarea
               name="content"
+              maxLength={2500}
               required
               className="p-2 h-40 rounded-xl shadow focus:outline-purple-400"
             />
@@ -65,6 +66,7 @@ const CreatePost = () => {
             </div>
             <textarea
               name="opinion"
+              maxLength={2500}
               className="h-40 p-2 rounded-xl shadow focus:outline-purple-400"
             />
           </label>

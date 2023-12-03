@@ -22,7 +22,7 @@ const FeedbackForm = () => {
     });
     const ret = await response.json();
     if (ret.success) {
-      toast.success(`Feedback posted! Thank you!`, {
+      toast.success(`Feedback posted. Thank you!`, {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
