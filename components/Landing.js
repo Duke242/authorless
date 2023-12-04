@@ -22,8 +22,8 @@ const Landing = async () => {
   console.log({ access });
 
   return (
-    <div className="flex flex-col h-screen bg-slate-800">
-      <h1 className="flex flex-col items-center text-center text-purple-800 text-8xl pt-20 mr-4 ml-4">
+    <div className="flex flex-col min-h-screen bg-slate-800">
+      <h1 className="flex flex-col items-center text-center text-purple-800 text-6xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl pt-8 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 mx-4">
         <span className="text-purple-400 font-normal">
           Explore a realm where curiosity rules,{" "}
         </span>
@@ -37,10 +37,10 @@ const Landing = async () => {
       {session ? (
         <DashboardButton />
       ) : (
-        <div className="flex justify-center flex-col w-fit mx-auto mt-8">
+        <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
           <Link
             href="/#pricing"
-            className="link link-hover py-2 text-base-200 bg-red-800 text-center rounded-full text-2xl bg-transparent border border-purple-500 border-solid border-2 px-8 "
+            className="link link-hover py-2 text-base-200 bg-red-800 text-center rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8"
           >
             Join
           </Link>
@@ -53,7 +53,7 @@ const Landing = async () => {
       {session && !access && (
         <Link
           href="/#pricing"
-          className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-2xl bg-transparent border border-purple-500 border-solid border-2 px-8 mt-10"
+          className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8 mt-10"
         >
           Subscribe for full access
         </Link>
