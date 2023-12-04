@@ -7,7 +7,6 @@ html,
 body {
   scroll-behavior: smooth !important;
   font-family: "Manrope", system-ui, sans-serif;
-  background-color: rgb(30 41 59) !important;
 }
 
 /* It makes the HTML progress bar filling smooth when value change. */

@@ -23,6 +23,7 @@ const Feed = async () => {
       label: "Pricing",
     },
   ];
+
   let { data: posts, error } = await supabase.from("posts").select(`
   *,
   likes (post_id,user_id),

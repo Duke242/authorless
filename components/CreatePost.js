@@ -52,7 +52,7 @@ const CreatePost = () => {
             />
           </label>
           <label className="flex flex-col">
-            Body
+            Content
             <textarea
               name="content"
               maxLength={2500}
