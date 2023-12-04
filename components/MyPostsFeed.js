@@ -39,13 +39,15 @@ const MyPostsFeed = async () => {
           <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
             {post.title}
           </h2>
-          <p className="break-words">{post.content}</p>
+          <pre className="break-words whitespace-pre-wrap">{post.content}</pre>
           {post.opinion && (
             <div>
               <h3 className="mt-4 break-words mb-4 text-purple-500 font-normal border-t-2 border-purple-300 w-fit border-solid">
                 Opinion
               </h3>
-              <p className="mb-2">{post.opinion}</p>
+              <pre className="mb-2 break-words whitespace-pre-wrap">
+                {post.opinion}
+              </pre>
             </div>
           )}
           {post.sources && (
