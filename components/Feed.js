@@ -48,7 +48,7 @@ const Feed = async () => {
       )}
     </div>
   ) : (
-    <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">
+    <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">
       {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
