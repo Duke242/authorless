@@ -55,7 +55,7 @@ const Feed = async () => {
         posts.slice(0, 2).map((post) => <Post key={post.id} {...{ post }} />)
       )}
 
-      <h1 className="mx-auto text-purple-700 w-max text-3xl text-center">
+      <h1 className="mx-auto text-purple-700 w-max text-3xl text-center mb-4">
         Subscribe to see more posts <br /> and access other pages.
       </h1>
 
