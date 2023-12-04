@@ -55,13 +55,13 @@ const Post = async ({
           {title}
         </h2>
       )}
-      <p className="break-words">{content}</p>
+      <pre className="break-words">{content}</pre>
       {opinion && (
         <div>
           <h3 className="mt-4 mb-4 text-purple-500 font-normal border-t-2 border-purple-300 w-fit border-solid">
             Opinion
           </h3>
-          <p className="mb-2 break-words">{opinion}</p>
+          <pre className="mb-2 break-words">{opinion}</pre>
         </div>
       )}
       <div className="flex pt-3">
