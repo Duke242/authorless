@@ -23,7 +23,7 @@ const Landing = async () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-800">
-      <h1 className="flex flex-col items-center text-center text-purple-800 text-6xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl pt-8 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 mx-4">
+      <h1 className="flex flex-col items-center text-center text-purple-800 text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl pt-8 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 mx-4">
         <span className="text-purple-400 font-normal">
           Explore a realm where curiosity rules,{" "}
         </span>
