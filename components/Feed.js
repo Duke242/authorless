@@ -40,7 +40,7 @@ const Feed = async () => {
   const access = profiles?.[0]?.has_access;
 
   return access ? (
-    <div className="h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
+    <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll">
       {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
