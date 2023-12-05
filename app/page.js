@@ -11,16 +11,17 @@ export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
 
   return (
-    <div className=" min-h-screen bg-slate-800">
-      <Header />
-      <main>
-        <Landing />
-        <Hero />
-        <Pricing />
-        <FAQ />
-        {/* <CTA /> */}
-      </main>
-      <Footer />
-    </div>
+    <div>Under maintenance</div>
+    // <div className=" min-h-screen bg-slate-800">
+    //   <Header />
+    //   <main>
+    //     <Landing />
+    //     <Hero />
+    //     <Pricing />
+    //     <FAQ />
+    //     {/* <CTA /> */}
+    //   </main>
+    //   <Footer />
+    // </div>
   );
 }

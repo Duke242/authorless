@@ -1,12 +1,43 @@
+import { useState } from "react";
 import Link from "next/link";
 import ButtonAccount from "./ButtonAccount";
 
 const Sidebar = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="w-1/3 ">
-      <div className="fixed top-0 left-0 flex flex-col w-3/12 border shadow-2xl  bg-[rgb(232,231,237)] h-full">
+    <div className="w-1/3 relative">
+      <div
+        className={`fixed top-0 left-0 flex flex-col w-3/12 border shadow-2xl bg-[rgb(232,231,237)] h-full ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out`}
+      >
+        <button
+          className="lg:hidden btn btn-ghost btn-sm mt-4 ml-4"
+          onClick={toggleMenu}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+
         <section
-          className="flex flex-col mx-auto pr-8 content-end pb-4 pl-5 backdrop-blur-md w-full pt-2"
+          className="flex flex-col mx-auto pr-8 content-end pb-4 pl-5 backdrop-blur-md w-full pt-2 lg:block"
           style={{ position: "sticky", top: 0 }}
         >
           <Link href="/" className="btn btn-ghost btn-sm w-fit mt-4">
