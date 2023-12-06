@@ -6,7 +6,11 @@ import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
 
 export default async function Home() {
-  return <div>Under maintenance</div>;
+  return (
+    <div className="w-screen h-screen flex justify-center items-center">
+      <h1 className="text-3xl">Under maintenance</h1>
+    </div>
+  );
   // return (
   //   <div className=" min-h-screen bg-slate-800">
   //     <Header />
