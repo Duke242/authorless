@@ -59,19 +59,18 @@ const Sidebar = () => {
         </ul>
       </div>
       <button
-        className={`md:hidden lg:hidden h-12 w-12 absolute fixed top-0 left-0 pt-2 ${
+        className={`md:hidden lg:hidden h-12 w-12 fixed top-0 left-0 bg-purple-800 opacity-50 mt-4 rounded-tr-lg rounded-br-lg ${
           isOpen ? "hidden" : ""
         }`}
         onClick={() => setIsOpen(true)}
       >
-        {" "}
         <span className="sr-only">Open main menu</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="purple"
+          stroke="white"
           className="w-12 h-12 text-base-content"
         >
           <path
@@ -85,11 +84,10 @@ const Sidebar = () => {
         <div
           className={`fixed inset-y-0 z-10 w-screen h-screen px-8 py-4 overflow-y-auto bg-base-200 sm:max-w-sm sm:ring-1 sm:ring-neutral/10 transform origin-right transition ease-in-out duration-300`}
         >
-          {/* Your logo/name on small screens */}
           <div className="flex items-center justify-between">
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 bg-color-primary mr-auto"
+              className="-m-2.5 rounded-md bg-color-primary mr-auto"
               onClick={() => setIsOpen(false)}
             >
               <svg
@@ -108,8 +106,6 @@ const Sidebar = () => {
               </svg>
             </button>
           </div>
-
-          {/* Your links on small screens */}
           <div className="flow-root">
             <div className="divider text-purple-800">Authorless</div>
             <ul className="ml-4 mt-4">
