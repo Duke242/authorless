@@ -7,7 +7,7 @@ export default function MyPosts() {
       <div className="flex">
         <Sidebar />
         <MyPostsFeed />
-        <div className="w-1/3 bg-[rgb(232,231,237)]" />
+        <div className="hidden w-1/3 bg-[rgb(232,231,237)] lg:block" />
       </div>
     </div>
   );

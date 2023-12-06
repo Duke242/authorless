@@ -36,8 +36,8 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="flex h-fit w-screen items-center justify-center bg-[rgb(232,231,237)]">
-      <div className="h-fit w-1/2 justify-center p-5 rounded-xl ml-5">
+    <div className="flex w-screen h-fit w-screen items-center md:justify-center lg:justify-center bg-[rgb(232,231,237)]">
+      <div className="h-fit md:w-1/2 lg:w-1/2 w-full justify-center p-5 rounded-xl ml-5">
         <h1 className="text-center font-semibold text-purple-500">Compose</h1>
         <form className="flex flex-col" onSubmit={submit}>
           <label className="flex flex-col">

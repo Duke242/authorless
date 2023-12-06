@@ -17,7 +17,7 @@ const BookmarksContainer = async () => {
   if (!bookmarks || bookmarks.length === 0) {
     // Handle case where there are no bookmarks
     return (
-      <p className="h-screen w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
+      <p className="h-screen w-full bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll p-40">
         No bookmarks found.
       </p>
     );
@@ -39,7 +39,7 @@ const BookmarksContainer = async () => {
   }
 
   return (
-    <div className="h-screen w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
+    <div className="h-screen w-full md:w-2/3 lg:w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
       {posts.map((post) => (
         <div
           className="p-6 mb-6 mt-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]"
