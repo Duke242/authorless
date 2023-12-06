@@ -6,17 +6,18 @@ import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
 
 export default async function Home() {
-  return (
-    <div className=" min-h-screen bg-slate-800">
-      <Header />
-      <main>
-        <Landing />
-        <Hero />
-        <Pricing />
-        <FAQ />
-        {/* <CTA /> */}
-      </main>
-      <Footer />
-    </div>
-  );
+  return <div>Under maintenance</div>;
+  // return (
+  //   <div className=" min-h-screen bg-slate-800">
+  //     <Header />
+  //     <main>
+  //       <Landing />
+  //       <Hero />
+  //       <Pricing />
+  //       <FAQ />
+  //       {/* <CTA /> */}
+  //     </main>
+  //     <Footer />
+  //   </div>
+  // );
 }
