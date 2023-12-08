@@ -1,6 +1,8 @@
 import { createServerClient } from "@supabase/ssr"
 import { getCookie, setCookie } from "cookies-next"
 
+export const dynamic = "force-dynamic"
+
 // The middleware is used to refresh the user's session before loading Server Component routes
 export async function createSupabaseReqResClient(req, res) {
   return createServerClient(

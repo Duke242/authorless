@@ -5,6 +5,8 @@ import "./globals.css"
 import Providers from "./providers"
 import { Inter } from "next/font/google"
 
+export const dynamic = "force-dynamic"
+
 export const viewport = {
   // Will use the primary color of your theme to show a nice theme color in the URL bar of supported browsers
   themeColor: config.colors.main,
