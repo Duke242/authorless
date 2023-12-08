@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
+export const dynamic = "force-dynamic"
+
 // This route is used to store the leads that are generated from the landing page.
 // The API call is initiated by <ButtonLead /> component
 export async function POST(req) {

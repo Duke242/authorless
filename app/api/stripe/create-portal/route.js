@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { createCustomerPortal } from "@/libs/stripe"
 import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
+export const dynamic = "force-dynamic"
+
 export async function POST(req) {
   try {
     const supabase = createSupabaseServerClient()

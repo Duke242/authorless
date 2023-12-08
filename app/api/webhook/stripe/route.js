@@ -5,6 +5,8 @@ import { SupabaseClient } from "@supabase/supabase-js"
 import configFile from "@/config"
 import { findCheckoutSession } from "@/libs/stripe"
 
+export const dynamic = "force-dynamic"
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 

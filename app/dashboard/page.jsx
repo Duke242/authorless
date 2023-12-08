@@ -12,8 +12,6 @@ import { cookies } from "next/headers"
 import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 export default async function Dashboard() {
-  const cookieStore = cookies()
-
   const supabase = createSupabaseServerClient()
 
   const user = await supabase.auth.getUser()
