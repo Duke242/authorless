@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server"
 import { createCheckout } from "@/libs/stripe"
 import { createServerClient } from "@supabase/ssr"
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 // This function is used to create a Stripe Checkout Session (one-time payment or subscription)
 // It's called by the <ButtonCheckout /> component
 // Users must be authenticated. It will prefill the Checkout data with their email and/or credit card (if any)
 export async function POST(req) {
   try {
-    const supabase = createSupabaseAppServerClient()
+    const supabase = createSupabaseServerClient()
     const {
       data: { user },
     } = await supabase.auth.getUser()

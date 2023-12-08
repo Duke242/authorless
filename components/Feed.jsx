@@ -1,27 +1,71 @@
 "use client"
 import Post from "./Post"
-import { browserPosts } from "@/libs/browserPosts"
 import Link from "next/link"
-import { useQuery } from "@tanstack/react-query"
-import { createBrowserClient } from "@supabase/ssr"
+import { QueryClient, useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import { createSupabaseBrowserClient } from "@/libs/createSupabaseBrowserClient"
+import { useEffect, useRef, useState } from "react"
+import {
+  POSTS_PER_LOAD,
+  infiniteBrowserPosts,
+} from "@/libs/infiniteBrowserPosts"
 
-// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-// const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-// const supabase = createClient(supabaseUrl, supabaseKey)
+const Feed = ({ posts: initialPosts }) => {
+  const [user, setUser] = useState(null)
+  const footer = useRef(null)
+  const supabase = createSupabaseBrowserClient()
 
-const Feed = ({ posts }) => {
-  // const supabaseSession = createServerComponentClient({ cookies })
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      setUser(user)
+    }
+    getUser()
+  }, [supabase])
 
-  // const {
-  //   data: { session },
-  // } = await supabaseSession.auth.getSession()
+  const toggleLike = ({ page, index }) => {
+    // const queryClient = new QueryClient()
+    // queryClient.setQueryData(["infinite-posts"], (prev) => console.log(prev))
+    console.log({ page, index })
+    refetch({
+      refetchPage: (refPage, refIndex) =>
+        refPage === page && refIndex === index,
+    })
+  }
 
-  // const supabase = createBrowserClient(
-  //   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  //   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  // )
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+    refetch,
+  } = useInfiniteQuery({
+    queryKey: ["infinite-posts"],
+    queryFn: infiniteBrowserPosts,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, pages) => pages.length + 1,
+    initialData: {
+      pages: [initialPosts],
+      pageParams: [1],
+    },
+  })
+  const posts = data.pages.flat()
 
-  // console.log({ supabase })
+  useEffect(() => {
+    const foot = footer.current
+    const callback = () => {
+      console.log("intersection")
+      fetchNextPage()
+    }
+    let observer = new IntersectionObserver(callback)
+    observer.observe(foot)
+    return () => observer.unobserve(foot)
+  }, [])
+
   const links = [
     {
       href: "/#pricing",
@@ -33,7 +77,9 @@ const Feed = ({ posts }) => {
   //   queryFn: browserPosts,
   // })
   // console.log({ FEEDPOST: posts })
+
   const postCount = posts.length
+  // console.log({ posts })
 
   // console.log({ posts, error, postCount })
 
@@ -51,8 +97,18 @@ const Feed = ({ posts }) => {
       {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
-        posts.map((post) => <Post key={post.id} {...{ post }} />)
+        data.pages.map((page, pageIdx) =>
+          page.map((post, postIdx) => (
+            <Post
+              key={post.id}
+              page={pageIdx}
+              index={postIdx}
+              {...{ post, toggleLike }}
+            />
+          ))
+        )
       )}
+      <div ref={footer}></div>
     </div>
   ) : (
     <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)]">

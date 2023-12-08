@@ -1,7 +1,7 @@
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 const MyPostsFeed = async () => {
-  const supabase = createSupabaseAppServerClient()
+  const supabase = createSupabaseServerClient()
 
   const {
     data: { user },

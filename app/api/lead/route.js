@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 // This route is used to store the leads that are generated from the landing page.
 // The API call is initiated by <ButtonLead /> component
@@ -11,7 +11,7 @@ export async function POST(req) {
   }
 
   try {
-    const supabase = createSupabaseAppServerClient()
+    const supabase = createSupabaseServerClient()
     await supabase.from("leads").insert({ email: body.email })
 
     return NextResponse.json({})

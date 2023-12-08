@@ -1,4 +1,5 @@
 import { createSupabaseServerClient } from "./createSupabaseServerClient"
+import { POSTS_PER_LOAD } from "./infiniteBrowserPosts"
 
 export const serverPosts = async () => {
   const supabase = createSupabaseServerClient()
@@ -13,7 +14,7 @@ export const serverPosts = async () => {
       `
     )
     .order("created_at", { ascending: false })
-    .limit(5)
+    .limit(POSTS_PER_LOAD)
   if (error) throw new Error(error)
   // console.log({ SERVER: posts })
   return posts

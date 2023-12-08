@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 import { createCustomerPortal } from "@/libs/stripe"
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 export async function POST(req) {
   try {
-    const supabase = createSupabaseAppServerClient()
+    const supabase = createSupabaseServerClient()
 
     const body = await req.json()
 

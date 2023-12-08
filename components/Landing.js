@@ -1,10 +1,10 @@
 import Link from "next/link"
 import DashboardButton from "./DashboardButton"
 import ButtonSignin from "./ButtonSignin"
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 const Landing = async () => {
-  const supabase = createSupabaseAppServerClient()
+  const supabase = createSupabaseServerClient()
 
   const {
     data: { user },

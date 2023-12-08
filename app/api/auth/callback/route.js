@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import config from "@/config"
-import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 import { serverPosts } from "@/libs/serverPosts"
 
 export const dynamic = "force-dynamic"
@@ -11,7 +11,7 @@ export async function GET(req) {
   const code = requestUrl.searchParams.get("code")
 
   if (code) {
-    const supabase = createSupabaseAppServerClient()
+    const supabase = createSupabaseServerClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (error) throw new Error(error)
   }

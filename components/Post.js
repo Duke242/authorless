@@ -5,9 +5,13 @@ import { revalidatePath } from "next/cache"
 import styles from "@/styles/Post.module.css"
 import { createSupabaseBrowserClient } from "@/libs/createSupabaseBrowserClient"
 import { useEffect, useState } from "react"
+import { QueryClient } from "@tanstack/react-query"
 
 const Post = ({
   post: { title, date, content, sources, opinion, id, likes, bookmarks },
+  page,
+  index,
+  toggleLike,
 }) => {
   const [user, setUser] = useState(null)
 
@@ -24,6 +28,10 @@ const Post = ({
   }, [supabase])
 
   const likePost = like.bind(null, { postId: id, userId: user?.id })
+
+  const submitLike = ({ target: { dataset } }) => {
+    toggleLike({ page: Number(dataset.page), index: Number(dataset.index) })
+  }
 
   const bookmarkPost = bookmark.bind(null, {
     postId: id,
@@ -55,7 +63,12 @@ const Post = ({
       )}
       <div className="flex pt-3">
         <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
-          <form action={likePost}>
+          <form
+            data-page={page}
+            data-index={index}
+            action={likePost}
+            onSubmit={submitLike}
+          >
             <button
               className={`${styles.like} flex mx-auto ${
                 userLikes ? styles.liked : "unliked"
