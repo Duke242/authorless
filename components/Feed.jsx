@@ -1,43 +1,50 @@
-"use server";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import Post from "./Post";
+"use client"
+import Post from "./Post"
+import { browserPosts } from "@/libs/browserPosts"
+import Link from "next/link"
+import { useQuery } from "@tanstack/react-query"
+import { createBrowserClient } from "@supabase/ssr"
 
-import { createClient } from "@supabase/supabase-js";
-import Link from "next/link";
+// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+// const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+// const supabase = createClient(supabaseUrl, supabaseKey)
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const Feed = ({ posts }) => {
+  // const supabaseSession = createServerComponentClient({ cookies })
 
-const Feed = async () => {
-  const supabaseSession = createServerComponentClient({ cookies });
+  // const {
+  //   data: { session },
+  // } = await supabaseSession.auth.getSession()
 
-  const {
-    data: { session },
-  } = await supabaseSession.auth.getSession();
+  // const supabase = createBrowserClient(
+  //   process.env.NEXT_PUBLIC_SUPABASE_URL,
+  //   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  // )
 
+  // console.log({ supabase })
   const links = [
     {
       href: "/#pricing",
       label: "Pricing",
     },
-  ];
+  ]
+  // const { data: posts, error } = useQuery({
+  //   queryKey: ["posts"],
+  //   queryFn: browserPosts,
+  // })
+  // console.log({ FEEDPOST: posts })
+  const postCount = posts.length
 
-  let { data: posts, error } = await supabase.from("posts").select(`
-  *,
-  likes (post_id,user_id),
-  bookmarks (post_id,user_id)
-  `);
+  // console.log({ posts, error, postCount })
 
-  const postCount = posts.length;
+  // let { data: profiles, e } = await supabase
+  //   .from("profiles")
+  //   .select("*")
+  //   .eq("id", session.user.id)
 
-  let { data: profiles, e } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", session.user.id);
+  // const access = profiles?.[0]?.has_access
 
-  const access = profiles?.[0]?.has_access;
+  const access = true
 
   return access ? (
     <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">
@@ -71,7 +78,7 @@ const Feed = async () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Feed;
+export default Feed

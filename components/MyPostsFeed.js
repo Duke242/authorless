@@ -1,32 +1,26 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
 
 const MyPostsFeed = async () => {
-  const supabaseSession = createServerComponentClient({ cookies });
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = createSupabaseAppServerClient()
 
   const {
-    data: { session },
-  } = await supabaseSession.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser()
 
   let { data: posts, error } = await supabase
     .from("posts")
     .select("*")
-    .eq("user_id", session.user.id);
+    .eq("user_id", user.id)
 
   if (error) {
-    console.error("Error fetching posts:", error);
-    return null; // or handle the error in a different way
+    console.error("Error fetching posts:", error)
+    return null // or handle the error in a different way
   }
 
   // console.log({ NEW: posts });
 
   if (!posts) {
-    return <div>There are no posts.</div>;
+    return <div>There are no posts.</div>
   }
 
   return (
@@ -56,7 +50,7 @@ const MyPostsFeed = async () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default MyPostsFeed;
+export default MyPostsFeed

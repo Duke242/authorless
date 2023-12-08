@@ -1,45 +1,44 @@
-import { createClient } from "@supabase/supabase-js";
-import { revalidatePath } from "next/cache";
+"use server"
+import { createClient } from "@supabase/supabase-js"
+import { revalidatePath } from "next/cache"
+import { createSupabaseServerClient } from "./createSupabaseServerClient"
 
-export async function bookmark(userId, postId) {
-  "use server";
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
-
+export async function bookmark({ userId, postId }) {
+  "use server"
+  console.log({ userId })
+  const supabase = createSupabaseServerClient()
   const setBookmark = async (bookmark) => {
     if (bookmark === false) {
       let { data: bookmarks, error } = await supabase
         .from("bookmarks")
-        .insert([{ post_id: userId.postId, user_id: userId.userId }])
-        .select();
-      if (error) throw error;
+        .insert([{ post_id: postId, user_id: userId }])
+        .select()
+      if (error) throw error
     } else if (bookmark === true) {
       const { data, error } = await supabase
         .from("bookmarks")
         .delete()
-        .eq("user_id", userId.userId)
-        .eq("post_id", userId.postId);
+        .eq("user_id", userId)
+        .eq("post_id", postId)
 
-      if (error) throw error;
+      if (error) throw error
     }
-  };
+  }
 
   try {
     const { count, data, error } = await supabase
       .from("bookmarks")
       .select("*", { count: "exact", head: true })
-      .match({ user_id: userId.userId, post_id: userId.postId });
+      .match({ user_id: userId, post_id: postId })
     if (error) {
-      console.log("Error");
+      console.log("Error")
     }
 
-    revalidatePath("/dashboard");
+    const bookmarked = count > 0
 
-    const bookmarked = count > 0;
-
-    await setBookmark(bookmarked);
+    await setBookmark(bookmarked)
+    revalidatePath("/dashboard")
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }

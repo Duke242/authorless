@@ -1,8 +1,5 @@
-import { redirect } from "next/navigation";
-import config from "@/config";
-import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { toast } from "react-hot-toast";
+import { redirect } from "next/navigation"
+import config from "@/config"
 
 // This is a server-side component to ensure the user is logged in.
 // If not, it will redirect to the login page.
@@ -10,31 +7,29 @@ import { toast } from "react-hot-toast";
 // You can also add custom static UI elements like a Navbar, Sidebar, Footer, etc..
 // See https://shipfa.st/docs/tutorials/private-page
 export default async function LayoutPrivate({ children }) {
-  const supabase = createServerComponentClient({ cookies });
-
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    { cookies: cookieInterface }
+  )
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser()
 
-  if (!session) {
-    redirect(config.auth.loginUrl);
+  if (!user) {
+    redirect(config.auth.loginUrl)
   }
-
-  const userId = session.user.id;
-
-  console.log({ userId });
 
   let { data: profiles, error } = await supabase
     .from("profiles")
     .select("has_access")
-    .eq("id", userId);
+    .eq("id", user.id)
 
-  const access = profiles?.[0]?.has_access;
-  console.log({ access });
+  const access = profiles?.[0]?.has_access
 
   if (access !== true) {
-    redirect(config.auth.callbackUrl);
+    redirect(config.auth.callbackUrl)
   }
 
-  return <>{children}</>;
+  return <>{children}</>
 }

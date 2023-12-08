@@ -1,25 +1,23 @@
-import Link from "next/link";
-import DashboardButton from "./DashboardButton";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import ButtonSignin from "./ButtonSignin";
+import Link from "next/link"
+import DashboardButton from "./DashboardButton"
+import ButtonSignin from "./ButtonSignin"
+import { createSupabaseAppServerClient } from "@/libs/createSupabaseServerClient"
 
 const Landing = async () => {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createSupabaseAppServerClient()
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser()
 
-  const userId = session?.user.id;
+  const userId = user.id
 
   let { data: profiles, error } = await supabase
     .from("profiles")
     .select("has_access")
-    .eq("id", userId);
+    .eq("id", userId)
 
-  const access = profiles?.[0]?.has_access;
-  console.log({ access });
+  const access = profiles?.[0]?.has_access
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-800">
@@ -34,7 +32,7 @@ const Landing = async () => {
           and authors stay hidden.
         </span>
       </h1>
-      {session ? (
+      {user ? (
         <DashboardButton />
       ) : (
         <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
@@ -50,7 +48,7 @@ const Landing = async () => {
           <ButtonSignin extraStyle="btn-primary" />
         </div>
       )}
-      {session && !access && (
+      {user && !access && (
         <Link
           href="/#pricing"
           className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8 mt-10"
@@ -59,7 +57,7 @@ const Landing = async () => {
         </Link>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Landing;
+export default Landing
