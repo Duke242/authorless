@@ -10,7 +10,7 @@ const Landing = async () => {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const userId = user.id
+  const userId = user?.id
 
   let { data: profiles, error } = await supabase
     .from("profiles")

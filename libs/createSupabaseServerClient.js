@@ -11,10 +11,10 @@ export function createSupabaseServerClient() {
           return cookies().get(name)?.value
         },
         set(name, value, options) {
-          cookies().set(name, value, ...options)
+          cookies().set(name, value, options)
         },
         remove(name, options) {
-          cookies().delete(name, ...options)
+          cookies().delete(name, options)
         },
       },
     }
