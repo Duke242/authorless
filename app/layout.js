@@ -12,6 +12,8 @@ export const viewport = {
   initialScale: 1,
 }
 
+export const dynamic = "force-dynamic"
+
 const font = Inter({ subsets: ["latin"] })
 
 // This adds default SEO tags to all pages in our app.

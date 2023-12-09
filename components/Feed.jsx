@@ -12,22 +12,37 @@ import {
 const Feed = ({ posts: initialPosts }) => {
   const [user, setUser] = useState(null)
   const footer = useRef(null)
+  const [access, setAccess] = useState(null)
+
   const supabase = createSupabaseBrowserClient()
 
   useEffect(() => {
-    const getUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
-      setUser(user)
+    const getUserWithProfile = async () => {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
+
+        const { data: profileData } = await supabase
+          .from("profiles")
+          .select("has_access")
+          .eq("id", user?.id)
+
+        const userProfile = {
+          user,
+          hasAccess: profileData?.[0]?.has_access || null,
+        }
+        setUser(userProfile.user)
+        setAccess(userProfile.hasAccess)
+      } catch (error) {
+        console.error("Error getting user with profile:", error.message)
+      }
     }
-    getUser()
-  }, [supabase])
+
+    getUserWithProfile()
+  }, [])
 
   const toggleLike = ({ page, index }) => {
-    // const queryClient = new QueryClient()
-    // queryClient.setQueryData(["infinite-posts"], (prev) => console.log(prev))
-    console.log({ page, index })
     refetch({
       refetchPage: (refPage, refIndex) =>
         refPage === page && refIndex === index,
@@ -58,7 +73,6 @@ const Feed = ({ posts: initialPosts }) => {
   useEffect(() => {
     const foot = footer.current
     const callback = () => {
-      console.log("intersection")
       fetchNextPage()
     }
     let observer = new IntersectionObserver(callback)
@@ -72,25 +86,8 @@ const Feed = ({ posts: initialPosts }) => {
       label: "Pricing",
     },
   ]
-  // const { data: posts, error } = useQuery({
-  //   queryKey: ["posts"],
-  //   queryFn: browserPosts,
-  // })
-  // console.log({ FEEDPOST: posts })
 
   const postCount = posts.length
-  // console.log({ posts })
-
-  // console.log({ posts, error, postCount })
-
-  // let { data: profiles, e } = await supabase
-  //   .from("profiles")
-  //   .select("*")
-  //   .eq("id", session.user.id)
-
-  // const access = profiles?.[0]?.has_access
-
-  const access = true
 
   return access ? (
     <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">
@@ -115,14 +112,23 @@ const Feed = ({ posts: initialPosts }) => {
       {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
-        posts.slice(0, 2).map((post) => <Post key={post.id} {...{ post }} />)
+        data.pages.map((page, pageIdx) =>
+          page.map((post, postIdx) => (
+            <Post
+              key={post.id}
+              page={pageIdx}
+              index={postIdx}
+              {...{ post, toggleLike }}
+            />
+          ))
+        )
       )}
-
+      <div ref={footer}></div>
       <h1 className="mx-auto text-purple-700 w-max text-3xl text-center mb-4">
         Subscribe to see more posts <br /> and access other pages.
       </h1>
 
-      <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center bg-purple-600 w-40 rounded mx-auto mt-5">
+      <div className="hidden lg:flex lg:justify-center lg:gap-12 lg:items-center bg-purple-600 w-40 rounded mx-auto mt-5 lg:mb-5">
         {links.map((link) => (
           <Link
             href={link.href}

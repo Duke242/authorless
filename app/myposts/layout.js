@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation"
 import config from "@/config"
+import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 // This is a server-side component to ensure the user is logged in.
 // If not, it will redirect to the login page.
@@ -7,11 +8,8 @@ import config from "@/config"
 // You can also add custom static UI elements like a Navbar, Sidebar, Footer, etc..
 // See https://shipfa.st/docs/tutorials/private-page
 export default async function LayoutPrivate({ children }) {
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    { cookies: cookieInterface }
-  )
+  const supabase = createSupabaseServerClient()
+
   const {
     data: { user },
   } = await supabase.auth.getUser()

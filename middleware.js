@@ -1,11 +1,50 @@
+import { createServerClient } from "@supabase/ssr"
 import { NextResponse } from "next/server"
-import { createSupabaseReqResClient } from "./libs/createSupabaseReqResClient"
 
-// The middleware is used to refresh the user's session before loading Server Component routes
-export async function middleware(req) {
-  const res = NextResponse.next()
-  const supabase = await createSupabaseReqResClient(req, res)
-  // console.log({ supabase })
+export async function middleware(request) {
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        get(name) {
+          return request.cookies.get(name)?.value
+        },
+        set(name, value, options) {
+          request.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+        },
+        remove(name, options) {
+          request.cookies.set({
+            name,
+            value: "",
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+        },
+      },
+    }
+  )
+
   await supabase.auth.getSession()
-  return res
+
+  return response
 }
