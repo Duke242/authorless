@@ -42,6 +42,20 @@ const Feed = ({ posts: initialPosts }) => {
     getUserWithProfile()
   }, [])
 
+  useEffect(() => {
+    const getTruncatetPosts = async () => {
+      let { data: truncatedPosts, error } = await supabase
+        .from("posts")
+        .select("*")
+        .limit(3)
+      console.log({ data: truncatedPosts })
+    }
+    if (error) {
+      console.error(error.message)
+    }
+    getTruncatetPosts()
+  }, [])
+
   const toggleLike = ({ page, index }) => {
     refetch({
       refetchPage: (refPage, refIndex) =>
