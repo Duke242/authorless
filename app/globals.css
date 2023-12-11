@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Manrope");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css?family=Manrope");
 
 html,
 body {
@@ -21,12 +21,4 @@ progress::-webkit-progress-value {
   .btn {
     @apply !capitalize;
   }
-}
-
-button.liked {
-  background-color: green;
-}
-
-button.unliked {
-  background-color: red;
 }
