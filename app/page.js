@@ -1,20 +1,20 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
-import Landing from "@/components/Landing";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import Header from "@/components/Header"
+import Hero from "@/components/Hero"
+import Pricing from "@/components/Pricing"
+import FAQ from "@/components/FAQ"
+import Footer from "@/components/Footer"
+import Landing from "@/components/Landing"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
-export const fetchCache = "force-no-store"; // to page.js
+export const fetchCache = "force-no-store" // to page.js
 
-export const revalidate = 0;
+export const revalidate = 0
 
 export default async function Home() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient({ cookies })
 
   return (
     <>
@@ -22,11 +22,11 @@ export default async function Home() {
       <main>
         <Landing />
         <Hero />
-        <Pricing />
+        {/* <Pricing /> */}
         <FAQ />
         {/* <CTA /> */}
       </main>
       <Footer />
     </>
-  );
+  )
 }

@@ -18,8 +18,8 @@ const Landing = async () => {
     .select("has_access")
     .eq("id", userId)
 
-  const access = profiles?.[0]?.has_access
-  console.log({ access })
+  // const access = profiles?.[0]?.has_access
+  // console.log({ access })
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-800">
@@ -38,7 +38,7 @@ const Landing = async () => {
         <DashboardButton />
       ) : (
         <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
-          <Link
+          {/* <Link
             href="/#pricing"
             className="link link-hover py-2 text-base-200 bg-red-800 text-center rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8"
           >
@@ -46,18 +46,18 @@ const Landing = async () => {
           </Link>
           <p className="text-white text-center m-3">
             Or, if you want to see some posts first
-          </p>
+          </p> */}
           <ButtonSignin extraStyle="btn-primary" />
         </div>
       )}
-      {session && !access && (
+      {/* {session && !access && (
         <Link
           href="/#pricing"
           className="link link-hover text-base-200 bg-red-800 mx-auto p-3 rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8 mt-10"
         >
           Subscribe for full access
         </Link>
-      )}
+      )} */}
     </div>
   )
 }
