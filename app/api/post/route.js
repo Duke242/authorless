@@ -1,14 +1,18 @@
-import { createClient } from "@supabase/supabase-js"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
+import { createClient } from "@supabase/supabase-js"
 
 export async function POST(req) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
 
+  const supabaseSession = createServerComponentClient({ cookies })
+
   const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    data: { session },
+  } = await supabaseSession.auth.getSession()
 
   const payload = await req.json()
 
@@ -19,7 +23,7 @@ export async function POST(req) {
       .from("posts")
       .insert([
         {
-          user_id: user.id,
+          user_id: session.user.id,
           ...payload,
         },
       ])

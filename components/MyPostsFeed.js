@@ -1,37 +1,37 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies, headers } from "next/headers";
-import Post from "./Post";
-import { createClient } from "@supabase/supabase-js";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies, headers } from "next/headers"
+import Post from "./Post"
+import { createClient } from "@supabase/supabase-js"
 
 const MyPostsFeed = async () => {
-  const supabaseSession = createServerComponentClient({ headers, cookies });
+  const supabaseSession = createServerComponentClient({ headers, cookies })
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  const supabase = createClient(supabaseUrl, supabaseKey)
 
   const {
     data: { session },
-  } = await supabaseSession.auth.getSession();
+  } = await supabaseSession.auth.getSession()
 
   let { data: posts, error } = await supabase
     .from("posts")
     .select("*")
-    .eq("user_id", session.user.id);
+    .eq("user_id", session.user.id)
 
   if (error) {
-    console.error("Error fetching posts:", error);
-    return null; // or handle the error in a different way
+    console.error("Error fetching posts:", error)
+    return null // or handle the error in a different way
   }
 
   // console.log({ NEW: posts });
 
   if (!posts) {
-    return <div>There are no posts.</div>;
+    return <div>There are no posts.</div>
   }
 
   return (
-    <div className="h-max w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
+    <div className="h-screen w-full md:w-2/3 lg:w-2/3 bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll">
       {posts.map((post) => (
         <div
           className="p-6 mb-6 mt-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]"
@@ -55,7 +55,7 @@ const MyPostsFeed = async () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default MyPostsFeed;
+export default MyPostsFeed

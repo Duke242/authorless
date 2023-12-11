@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
 import { createClient } from "@supabase/supabase-js"
 
 export async function POST(req) {
@@ -6,11 +8,11 @@ export async function POST(req) {
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
 
+  const supabaseSession = createServerComponentClient({ cookies })
+
   const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  console.log({ A: supabase.auth })
-  console.log({ user })
+    data: { session },
+  } = await supabaseSession.auth.getSession()
 
   const payload = await req.json()
 
@@ -19,7 +21,7 @@ export async function POST(req) {
       .from("feedback")
       .insert([
         {
-          user_id: user.id,
+          user_id: session.user.id,
           content: payload.feedback,
         },
       ])

@@ -20,6 +20,6 @@ const RightSidebar = () => {
         {/* <ClickCopy content={"Hellooo"} /> */}
       </div>
     </div>
-  );
-};
-export default RightSidebar;
+  )
+}
+export default RightSidebar
