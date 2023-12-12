@@ -31,8 +31,6 @@ const BookmarksContainer = async () => {
       bookmarks.map((bookmark) => bookmark.post_id)
     )
 
-  console.log({ posts })
-
   if (postsError) {
     console.error("Error fetching posts:", postsError)
     return null // or handle the error in a different way

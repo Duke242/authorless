@@ -22,18 +22,22 @@ const Feed = async () => {
       label: "Pricing",
     },
   ]
-  let { data: posts, error } = await supabase.from("posts").select(`
+  let { data: posts, error } = await supabase.from("posts").select(
+    `
     *,
     likes (post_id,user_id),
     bookmarks (post_id,user_id) 
-  `)
+  `
+  )
 
-  let { data: profiles, e } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", session.user.id)
+  posts.reverse()
 
-  const access = profiles[0].has_access
+  // let { data: profiles, e } = await supabase
+  //   .from("profiles")
+  //   .select("*")
+  //   .eq("id", session.user.id)
+
+  const access = true
 
   return access ? (
     <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">

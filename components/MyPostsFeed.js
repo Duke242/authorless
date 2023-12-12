@@ -24,10 +24,14 @@ const MyPostsFeed = async () => {
     return null // or handle the error in a different way
   }
 
-  // console.log({ NEW: posts });
+  console.log({ NEW: posts })
 
-  if (!posts) {
-    return <div>There are no posts.</div>
+  if (!posts || posts.length === 0) {
+    return (
+      <p className="h-screen w-full bg-[rgb(232,231,237)] border border-solid border-transparent overflow-scroll p-40">
+        No posts found.
+      </p>
+    )
   }
 
   return (

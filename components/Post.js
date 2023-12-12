@@ -23,8 +23,6 @@ const Post = async ({
     data: { session },
   } = await supabase.auth.getSession()
 
-  console.log({ a: session.user.id })
-
   const likePost = like.bind(null, { postId: id, userId: session.user.id })
 
   const userLikes = likes.some(
