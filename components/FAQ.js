@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
 
 // <FAQ> component is a lsit of <Item> component
 // Just import the FAQ & add your FAQ content to the const faqList
@@ -15,15 +15,15 @@ const faqList = [
       </div>
     ),
   },
-  {
-    question: "Can I get a refund?",
-    answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email. Email: support@authorless.pro
-      </p>
-    ),
-  },
+  // {
+  //   question: "Can I get a refund?",
+  //   answer: (
+  //     <p>
+  //       Yes! You can request a refund within 7 days of your purchase. Reach out
+  //       by email. Email: support@authorless.pro
+  //     </p>
+  //   ),
+  // },
   {
     question: "I have another question",
     answer: (
@@ -32,19 +32,19 @@ const faqList = [
       </div>
     ),
   },
-];
+]
 
 const Item = ({ item }) => {
-  const accordion = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const accordion = useRef(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <li>
       <button
         className="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
         onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
+          e.preventDefault()
+          setIsOpen(!isOpen)
         }}
         aria-expanded={isOpen}
       >
@@ -91,8 +91,8 @@ const Item = ({ item }) => {
         <div className="pb-5 leading-relaxed">{item?.answer}</div>
       </div>
     </li>
-  );
-};
+  )
+}
 
 const FAQ = () => {
   return (
@@ -112,7 +112,7 @@ const FAQ = () => {
         </ul>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FAQ;
+export default FAQ
