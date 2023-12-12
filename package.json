@@ -33,7 +33,8 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-toastify": "^9.1.3",
     "react-tooltip": "^5.21.1",
-    "stripe": "^13.2.0"
+    "stripe": "^13.2.0",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",

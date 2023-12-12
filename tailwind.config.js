@@ -70,4 +70,4 @@ module.exports = {
     // https://daisyui.com/
     themes: ["light", "dark"],
   },
-};
+}

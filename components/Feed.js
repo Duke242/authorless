@@ -22,15 +22,16 @@ const Feed = async () => {
       label: "Pricing",
     },
   ]
-  let { data: posts, error } = await supabase.from("posts").select(
-    `
+  let { data: posts, error } = await supabase
+    .from("posts")
+    .select(
+      `
     *,
     likes (post_id,user_id),
     bookmarks (post_id,user_id) 
   `
-  )
-
-  posts.reverse()
+    )
+    .order("id", { ascending: false })
 
   // let { data: profiles, e } = await supabase
   //   .from("profiles")

@@ -23,18 +23,18 @@ const Hero = () => {
         <h1 className="w-full font-normal text-5xl md:text-8xl lg:text-9xl tracking-tight text-center text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-violet-600 to-sky-900">
           Ideas live here.
         </h1>
-        <ol className="list-disc list-inside space-y-2 text-xl lg:text-4xl text-center text-purple-700 font-normal">
-          <li className="mb-2">
-            Liberate your mind: Unchain creativity for limitless ideas.
-          </li>
-          <li className="mb-2">
-            Unshackle your imagination: Let creativity redefine possibilities.
-          </li>
-          <li className="mb-2">
-            Fuel innovation: Creativity propels progress and fosters a dynamic,
-            ever-evolving mindset.
-          </li>
-        </ol>
+        <p className="space-y-2 text-xl lg:text-3xl text-center text-purple-700 font-normal">
+          Jump into our social forum, where hidden authors make every post
+          interesting.
+          <br /> In this anonymous space, explore posts that spark your
+          creativity and make you think.
+          <br /> Join a community where posts are all about the ideas, not
+          personal details.
+          <br /> Find inspiration for your projects, business, hobbies, and
+          more.
+          <br /> Discover hidden stories that can fuel your own creativity and
+          passions.
+        </p>
         {/* <div className="w-full flex justify-center">______
           <button className="'btn btn-primary btn-wide">
             Subscribe

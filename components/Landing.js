@@ -23,22 +23,22 @@ const Landing = async () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-800">
-      <h1 className="flex flex-col items-center text-center text-purple-800 text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl pt-8 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 mx-4">
+      <h1 className="flex flex-col items-center text-center text-purple-800 pt-12 text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl sm:pt-12 md:pt-12 lg:pt-16 xl:pt-14 mx-4 mb-8">
+        <span className="text-purple-300 font-normal">
+          Find your project spark.
+        </span>
         <span className="text-purple-400 font-normal">
-          Explore a realm where curiosity rules,
+          Each perspective hides unique inspiration.
         </span>
-        <span className="text-purple-600 font-normal">
-          ideas are prized for merit,
-        </span>
-        <span className="text-purple-800 font-bold">
-          and authors stay hidden.
+        <span className="text-purple-500 font-bold">
+          Become the ideal, innovative version of yourself.
         </span>
       </h1>
-      {session ? (
-        <DashboardButton />
-      ) : (
-        <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
-          {/* <Link
+      {/* {session ? ( */}
+      <DashboardButton />
+      {/* ) : ( */}
+      <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
+        {/* <Link
             href="/#pricing"
             className="link link-hover py-2 text-base-200 bg-red-800 text-center rounded-full text-xl sm:text-2xl bg-transparent border border-purple-500 border-solid border-2 px-6 sm:px-8"
           >
@@ -47,9 +47,9 @@ const Landing = async () => {
           <p className="text-white text-center m-3">
             Or, if you want to see some posts first
           </p> */}
-          <ButtonSignin extraStyle="btn-primary" />
-        </div>
-      )}
+        {/* <ButtonSignin extraStyle="btn-primary" /> */}
+      </div>
+      {/* )} */}
       {/* {session && !access && (
         <Link
           href="/#pricing"
