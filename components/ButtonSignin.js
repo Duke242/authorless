@@ -26,7 +26,7 @@ const ButtonSignin = ({ text = "Sign In", extraStyle }) => {
 
   const handleClick = () => {
     if (user) {
-      router.push("/dashboard")
+      router.push(config.auth.callbackUrl)
     } else {
       router.push(config.auth.loginUrl)
     }
