@@ -32,7 +32,10 @@ export async function bookmark({ userId, postId }) {
     const { count, data, error } = await supabase
       .from("bookmarks")
       .select("*", { count: "exact", head: true })
-      .match({ user_id: userId, post_id: postId })
+      .match({ user_id: userId })
+      .match({ post_id: postId })
+    revalidatePath("/dashboard")
+
     if (error) {
       console.log("Error")
     }
@@ -40,7 +43,6 @@ export async function bookmark({ userId, postId }) {
     const bookmarked = count > 0
 
     await setBookmark(bookmarked)
-    revalidatePath("/dashboard")
   } catch (error) {
     console.error(error)
   }
