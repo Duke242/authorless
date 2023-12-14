@@ -41,7 +41,7 @@ const Feed = async () => {
   const access = true
 
   return access ? (
-    <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">
+    <div className="min-h-screen scrollbar-hide w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">
       {posts.map((post) => (
         <Post key={post.id} {...{ post }} />
       ))}

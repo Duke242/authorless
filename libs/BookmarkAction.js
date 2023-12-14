@@ -21,8 +21,8 @@ export async function bookmark({ userId, postId }) {
       const { data, error } = await supabase
         .from("bookmarks")
         .delete()
-        .eq("user_id", userId)
-        .eq("post_id", postId)
+        .match("user_id", userId)
+        .match("post_id", postId)
 
       if (error) throw error
     }

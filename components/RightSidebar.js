@@ -1,7 +1,7 @@
 // import ClickCopy from "./ClickCopy";
 const RightSidebar = () => {
   return (
-    <div className="w-1/3 flex flex-col h-full hidden lg:block">
+    <div className="w-1/3 flex flex-col h-full scrollbar-hide hidden lg:block">
       <div className="w-3/12 rounded bg-[rgba(232,231,237)] pr-4 text-left pt-4 fixed top-0 right-0 h-full pl-5">
         <p className="text-gray-500">
           “The important thing is not to stop questioning. Curiosity has its own

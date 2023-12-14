@@ -62,7 +62,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwind-scrollbar-hide")],
   daisyui: {
     // Light & dark themes are added by default (it switches automatically based on OS settings)
     // You can add another theme among the list of 30+
