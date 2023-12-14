@@ -16,13 +16,16 @@ export async function bookmark({ userId, postId }) {
         .from("bookmarks")
         .insert([{ post_id: postId, user_id: userId }])
         .select()
+      revalidatePath("/dashboard")
+
       if (error) throw error
     } else if (bookmark === true) {
       const { data, error } = await supabase
         .from("bookmarks")
         .delete()
-        .match("user_id", userId)
-        .match("post_id", postId)
+        .eq("user_id", userId)
+        .eq("post_id", postId)
+      revalidatePath("/dashboard")
 
       if (error) throw error
     }
@@ -34,14 +37,11 @@ export async function bookmark({ userId, postId }) {
       .select("*", { count: "exact", head: true })
       .match({ user_id: userId })
       .match({ post_id: postId })
-    revalidatePath("/dashboard")
 
     if (error) {
       console.log("Error")
     }
-
     const bookmarked = count > 0
-
     await setBookmark(bookmarked)
   } catch (error) {
     console.error(error)
