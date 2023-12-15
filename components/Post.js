@@ -59,10 +59,10 @@ const Post = async ({
         </div>
       )}
       <div className="flex pt-3">
-        <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
+        <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid">
           <div>
             {session ? (
-              <>
+              <div className="flex items-center">
                 <form action={likePost}>
                   <button
                     className={`${styles.like} flex mx-auto ${
@@ -78,9 +78,9 @@ const Post = async ({
                     }`}
                   ></button>
                 </form>
-              </>
+              </div>
             ) : (
-              <p className="text-sm text-gray-400 mr-0">
+              <p className="text-sm text-gray-400">
                 Please log in to like and bookmark posts.
               </p>
             )}
