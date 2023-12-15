@@ -23,7 +23,7 @@ export async function POST(req) {
       .from("posts")
       .insert([
         {
-          user_id: session.user.id,
+          user_id: userId,
           ...payload,
         },
       ])

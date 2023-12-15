@@ -35,7 +35,12 @@ const Landing = async () => {
         </span>
       </h1>
       {/* {session ? ( */}
-      <DashboardButton />
+      {/* <DashboardButton /> */}
+      <Link href={"dashboard"} className="flex w-full">
+        <button className="text-white mx-auto text-2xl bg-purple-600 w-fit p-4 rounded-full hover:bg-purple-800 transition">
+          Dashboard
+        </button>
+      </Link>
       {/* ) : ( */}
       <div className="flex justify-center items-center flex-col w-full sm:w-3/4 lg:w-1/2 mx-auto mt-8">
         {/* <Link

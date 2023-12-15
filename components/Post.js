@@ -23,21 +23,24 @@ const Post = async ({
     data: { session },
   } = await supabase.auth.getSession()
 
-  const likePost = like.bind(null, { postId: id, userId: session.user.id })
+  const likePost = session
+    ? like.bind(null, { postId: id, userId: session.user.id })
+    : null
 
-  const userLikes = likes.some(
-    ({ user_id: userId }) => userId === session.user.id
-  )
+  const userLikes = session
+    ? likes.some(({ user_id: userId }) => userId === session.user.id)
+    : false
 
-  const bookmarkPost = bookmark.bind(null, {
-    postId: id,
-    userId: session.user.id,
-  })
+  const bookmarkPost = session
+    ? bookmark.bind(null, { postId: id, userId: session.user.id })
+    : null
 
-  const userBookmarks = bookmarks.some(
-    ({ user_id: userId, post_id: postId }) =>
-      userId === session.user.id && postId === id
-  )
+  const userBookmarks = session
+    ? bookmarks.some(
+        ({ user_id: userId, post_id: postId }) =>
+          userId === session.user.id && postId === id
+      )
+    : false
 
   return (
     <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
