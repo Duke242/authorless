@@ -60,21 +60,31 @@ const Post = async ({
       )}
       <div className="flex pt-3">
         <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
-          <form action={likePost}>
-            <button
-              className={`${styles.like} flex mx-auto ${
-                userLikes ? styles.liked : "unliked"
-              }`}
-              type="submit"
-            ></button>
-          </form>
-          <form action={bookmarkPost}>
-            <button
-              className={`${styles.bookmark} flex mx-auto ${
-                userBookmarks ? styles.bookmarked : "noBookmark"
-              }`}
-            ></button>
-          </form>
+          <div>
+            {session ? (
+              <>
+                <form action={likePost}>
+                  <button
+                    className={`${styles.like} flex mx-auto ${
+                      userLikes ? styles.liked : "unliked"
+                    }`}
+                    type="submit"
+                  ></button>
+                </form>
+                <form action={bookmarkPost}>
+                  <button
+                    className={`${styles.bookmark} flex mx-auto ${
+                      userBookmarks ? styles.bookmarked : "noBookmark"
+                    }`}
+                  ></button>
+                </form>
+              </>
+            ) : (
+              <p className="text-sm text-gray-400 mr-0">
+                Please log in to like and bookmark posts.
+              </p>
+            )}
+          </div>
           <p className="text-gray-500 text-sm mx-auto pt-2">{date}</p>
         </div>
         {sources && (
