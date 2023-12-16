@@ -1,12 +1,14 @@
-import CreatePost from "@/components/CreatePost";
-import Sidebar from "@/components/Sidebar";
+import CreatePost from "@/components/CreatePost"
+import RightSidebar from "@/components/RightSidebar"
+import Sidebar from "@/components/Sidebar"
 
 const createPost = () => {
   return (
     <div>
       <Sidebar />
       <CreatePost />
+      <RightSidebar />
     </div>
-  );
-};
-export default createPost;
+  )
+}
+export default createPost
