@@ -44,6 +44,7 @@ const CreatePost = () => {
               Title <span className="text-gray-400">(optional)</span>
             </div>
             <input
+              placeholder="Title of post"
               name="title"
               type="text"
               maxLength={60}
@@ -53,6 +54,7 @@ const CreatePost = () => {
           <label className="flex flex-col">
             Content
             <textarea
+              placeholder="Quote, story, thought, etc..."
               name="content"
               maxLength={2500}
               required
@@ -64,6 +66,7 @@ const CreatePost = () => {
               Opinion <span className="text-gray-400">(optional)</span>
             </div>
             <textarea
+              placeholder="What are your thoughts on the content above?"
               name="opinion"
               maxLength={2500}
               className="h-40 p-2 rounded-xl shadow focus:outline-purple-400"
@@ -74,6 +77,7 @@ const CreatePost = () => {
               Source <span className="text-gray-400">(optional)</span>
             </div>
             <textarea
+              placeholder="References, if available."
               name="sources"
               maxLength={70}
               className="h-20 p-2 rounded-xl shadow focus:outline-purple-400"
