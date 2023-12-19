@@ -25,10 +25,10 @@ const Landing = async () => {
     <div className="flex flex-col min-h-screen bg-slate-800">
       <h1 className="flex flex-col items-center text-center text-purple-800 pt-12 text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl sm:pt-12 md:pt-12 lg:pt-16 xl:pt-14 mx-4 mb-8">
         <span className="text-purple-300 font-normal">
-          Find your project spark.
+          Anonymously post your interesting ideas.
         </span>
         <span className="text-purple-400 font-normal">
-          Each perspective hides unique inspiration.
+          Inspire others and be inspired.
         </span>
         <span className="text-purple-500 font-bold">
           Become the ideal, innovative version of yourself.
