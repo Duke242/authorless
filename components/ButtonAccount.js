@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import apiClient from "@/libs/api";
+import { useState, useEffect } from "react"
+import { Popover, Transition } from "@headlessui/react"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import apiClient from "@/libs/api"
 
 // A button to show user some account actions.
 //  1. Billing: open a Stripe Customer Portal to manage their billing (cancel subscription, update payment method, etc.).
@@ -13,40 +13,40 @@ import apiClient from "@/libs/api";
 //  2. Logout: sign out and go back to homepage
 // See more at https://shipfa.st/docs/components/buttonAccount
 const ButtonAccount = () => {
-  const supabase = createClientComponentClient();
-  const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(null);
+  const supabase = createClientComponentClient()
+  const [isLoading, setIsLoading] = useState(false)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
+      const { data } = await supabase.auth.getUser()
 
-      setUser(data.user);
-    };
+      setUser(data.user)
+    }
 
-    getUser();
-  }, [supabase]);
+    getUser()
+  }, [supabase])
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    window.location.href = "/";
-  };
+    await supabase.auth.signOut()
+    window.location.href = "/"
+  }
 
   const handleBilling = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
       const { url } = await apiClient.post("/stripe/create-portal", {
         returnUrl: window.location.href,
-      });
+      })
 
-      window.location.href = url;
+      window.location.href = url
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
 
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <Popover className="relative z-10">
@@ -70,7 +70,7 @@ const ButtonAccount = () => {
 
             {user?.user_metadata?.name ||
               user?.email?.split("@")[0] ||
-              "Account"}
+              "No User"}
 
             {isLoading ? (
               <span className="loading loading-spinner loading-xs"></span>
@@ -150,7 +150,7 @@ const ButtonAccount = () => {
         </>
       )}
     </Popover>
-  );
-};
+  )
+}
 
-export default ButtonAccount;
+export default ButtonAccount
