@@ -8,7 +8,7 @@ import {
   POSTS_PER_LOAD,
   infiniteBrowserPosts,
 } from "@/libs/infiniteBrowserPosts"
-import { SpinningCircles } from "react-loading-icons"
+import { ThreeDots } from "react-loading-icons"
 
 const Feed = ({ posts: initialPosts }) => {
   const [user, setUser] = useState(null)
@@ -54,6 +54,7 @@ const Feed = ({ posts: initialPosts }) => {
       pageParams: [1],
     },
   })
+  console.log({ hasNextPage })
   const posts = data.pages.flat()
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const Feed = ({ posts: initialPosts }) => {
   const access = true
 
   return access ? (
-    <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll mx-auto w-fit md:w-2/3 lg:w-2/3">
+    <div className="min-h-screen w-2/3 mx-4 mt-2 bg-[rgb(232,231,237)] overflow-scroll overscroll-hidden mx-auto w-fit md:w-2/3 lg:w-2/3">
       {postCount === 0 ? (
         <div className="text-center p-4">No posts available</div>
       ) : (
@@ -104,7 +105,7 @@ const Feed = ({ posts: initialPosts }) => {
         )
       )}
       {isFetchingNextPage ? (
-        <SpinningCircles fill="#9333ea" className="mx-auto" />
+        <ThreeDots fill="#9333ea" className="mx-auto" speed={0.75} />
       ) : null}
       <div ref={footer}></div>
     </div>
