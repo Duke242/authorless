@@ -1,10 +1,6 @@
-import Image from "next/image";
-import TestimonialsAvatars from "./TestimonialsAvatars";
-import config from "@/config";
-
 const Hero = () => {
   return (
-    <section className="w-full mx-auto h-screen flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-base-200">
+    <section className="w-full pt-14 mx-auto h-screen flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20 bg-base-200">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         {/* <a
           href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
@@ -23,17 +19,22 @@ const Hero = () => {
         <h1 className="w-full font-normal text-5xl md:text-8xl lg:text-9xl tracking-tight text-center text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-violet-600 to-sky-900">
           Ideas live here.
         </h1>
-        <ol className="list-disc list-inside space-y-2 text-xl lg:text-4xl text-center text-purple-700 font-normal">
-          <li className="mb-2">
-            Liberate your mind: Unchain creativity for limitless ideas.
-          </li>
-          <li className="mb-2">
-            Unshackle your imagination: Let creativity redefine possibilities.
-          </li>
-          <li className="mb-2">
-            Fuel innovation: Creativity propels progress and fosters a dynamic,
-            ever-evolving mindset.
-          </li>
+        <p className="space-y-2 text-xl lg:text-3xl text-center text-purple-700 font-normal">
+          Jump into our social forum, where hidden authors make every post
+          interesting.
+          <br /> In this anonymous space, explore posts that spark your
+          creativity and make you think.
+          <br /> Join a community where posts are all about the ideas, not
+          personal details.
+          <br /> Find inspiration for your projects, business, hobbies, and
+          more.
+          <br /> Discover hidden stories that can fuel your own creativity and
+          passions.
+        </p>
+        <ol className="space-y-2 text-xl lg:text-3xl text-center text-purple-700 font-bold w-full underline">
+          <li>No politics.</li>
+          <li>No bots.</li>
+          <li>No trolls.</li>
         </ol>
         {/* <div className="w-full flex justify-center">______
           <button className="'btn btn-primary btn-wide">
@@ -54,7 +55,7 @@ const Hero = () => {
         />
       </div> */}
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

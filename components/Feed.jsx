@@ -58,7 +58,6 @@ const Feed = ({ posts: initialPosts }) => {
   useEffect(() => {
     const foot = footer.current
     const callback = () => {
-      console.log("intersection")
       fetchNextPage()
     }
     let observer = new IntersectionObserver(callback)
@@ -99,15 +98,11 @@ const Feed = ({ posts: initialPosts }) => {
       ) : (
         data.pages.map((page, pageIdx) =>
           page.map((post, postIdx) => (
-            <Post
-              key={post.id}
-              page={pageIdx}
-              index={postIdx}
-              {...{ post, toggleLike }}
-            />
+            <Post key={post.id} page={pageIdx} index={postIdx} {...{ post }} />
           ))
         )
       )}
+      {status === "pending" ? <p>Loading...</p> : null}
       <div ref={footer}></div>
     </div>
   ) : (

@@ -1,10 +1,10 @@
-"use client";
-import Link from "next/link";
-import ButtonAccount from "./ButtonAccount";
-import { useState } from "react";
+"use client"
+import Link from "next/link"
+import ButtonAccount from "./ButtonAccount"
+import { useState } from "react"
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="flex lg:flex md:flex md:w-1/3 lg:w-1/3 bg-[rgb(232,231,237)]">
@@ -32,12 +32,12 @@ const Sidebar = () => {
         </section>
         <ul className="ml-4 mt-4">
           <Link href={"compose"}>
-            <li className="flex text-xl align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2 text-purple-600">
+            <button className="flex text-md font-bold mx-auto align-center w-fit text-left text-base list-none font-normal btn-primary text-white p-3 rounded bg-purple-600 hover:bg-purple-700 hover:shadow-xl hover:transition">
               Compose
-            </li>
+            </button>
           </Link>
           <Link href={"dashboard"}>
-            <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
+            <li className="flex align-center mt-2 w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
               Feed
             </li>
           </Link>
@@ -46,11 +46,11 @@ const Sidebar = () => {
               My Posts
             </li>
           </Link>
-          <Link href={"bookmarks"}>
+          {/* <Link href={"bookmarks"}>
             <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
               Bookmarks
             </li>
-          </Link>
+          </Link> */}
           <Link href={"feedback"}>
             <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
               Give Feedback
@@ -126,9 +126,9 @@ const Sidebar = () => {
               </Link>
               <ButtonAccount />
               <Link href={"compose"}>
-                <li className="flex text-xl align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2 text-purple-600">
+                <button className="flex text-md font-bold mx-auto align-center w-fit text-left text-base list-none font-normal btn-primary text-white p-2 rounded bg-purple-600 hover:bg-purple-800">
                   Compose
-                </li>
+                </button>
               </Link>
               <Link href={"dashboard"}>
                 <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
@@ -140,11 +140,11 @@ const Sidebar = () => {
                   My Posts
                 </li>
               </Link>
-              <Link href={"bookmarks"}>
+              {/* <Link href={"bookmarks"}>
                 <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
                   Bookmarks
                 </li>
-              </Link>
+              </Link> */}
               <Link href={"feedback"}>
                 <li className="flex align-center w-full text-left text-base list-none font-normal border-5 hover:bg-gray-300 hover:font-semibold cursor-pointer rounded transition p-2">
                   Give Feedback
@@ -155,7 +155,7 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

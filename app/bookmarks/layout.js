@@ -1,32 +1,17 @@
 import { redirect } from "next/navigation"
 import config from "@/config"
-import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
+import { cookies } from "next/headers"
 
-// This is a server-side component to ensure the user is logged in.
-// If not, it will redirect to the login page.
-// It's applied to all subpages of /dashboard in /app/dashboard/*** pages
-// You can also add custom static UI elements like a Navbar, Sidebar, Footer, etc..
-// See https://shipfa.st/docs/tutorials/private-page
 export default async function LayoutPrivate({ children }) {
-  const supabase = createSupabaseServerClient()
+  return redirect(config.auth.callbackUrl)
+  const supabase = createServerComponentClient({ cookies })
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser()
+    data: { session },
+  } = await supabase.auth.getSession()
 
-  if (!user) {
+  if (!session) {
     redirect(config.auth.loginUrl)
-  }
-
-  let { data: profiles, error } = await supabase
-    .from("profiles")
-    .select("has_access")
-    .eq("id", user.id)
-
-  const access = profiles?.[0]?.has_access
-
-  if (access !== true) {
-    redirect(config.auth.callbackUrl)
   }
 
   return <>{children}</>

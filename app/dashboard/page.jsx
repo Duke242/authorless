@@ -8,14 +8,12 @@ import {
   QueryClient,
 } from "@tanstack/react-query"
 import { serverPosts } from "@/libs/serverPosts"
-import { cookies } from "next/headers"
 import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 
 export default async function Dashboard() {
   const supabase = createSupabaseServerClient()
 
   const user = await supabase.auth.getUser()
-  // console.log({ user })
 
   const queryClient = new QueryClient()
 
@@ -25,7 +23,7 @@ export default async function Dashboard() {
   })
 
   return (
-    <main className="flex flex-col min-h-screen bg-[rgb(232,231,237)] border border-solid border-transparent overflow-hidden">
+    <main className="flex h-full bg-[rgb(232,231,237)]">
       <div className="flex">
         <Sidebar />
         <HydrationBoundary state={dehydrate(queryClient)}>

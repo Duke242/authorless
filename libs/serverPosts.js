@@ -8,14 +8,11 @@ export const serverPosts = async () => {
     .from("posts")
     .select(
       `
-        *,
-        likes (post_id,user_id),
-        bookmarks (post_id,user_id)
+        *
       `
     )
     .order("created_at", { ascending: false })
     .limit(POSTS_PER_LOAD)
   if (error) throw new Error(error)
-  // console.log({ SERVER: posts })
   return posts
 }

@@ -11,15 +11,15 @@ import { createSupabaseServerClient } from "@/libs/createSupabaseServerClient"
 export const dynamic = "force-dynamic"
 
 export default async function LayoutPrivate({ children }) {
-  const supabase = createSupabaseServerClient()
+  // const supabase = createSupabaseServerClient()
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser()
 
-  if (!user) {
-    redirect(config.auth.loginUrl)
-  }
+  // if (!user) {
+  //   redirect(config.auth.loginUrl)
+  // }
 
   return <>{children}</>
 }

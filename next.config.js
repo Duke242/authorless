@@ -4,9 +4,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    serverActions: true,
-  },
   images: {
     domains: [
       // NextJS <Image> component needs to whitelist domains for src={}

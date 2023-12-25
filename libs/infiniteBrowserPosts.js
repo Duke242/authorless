@@ -6,9 +6,7 @@ export const infiniteBrowserPosts = async ({ pageParam = 1 }) => {
     .from("posts")
     .select(
       `
-        *,
-        likes (post_id,user_id),
-        bookmarks (post_id,user_id)
+        *
       `
     )
     .order("created_at", { ascending: false })

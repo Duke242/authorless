@@ -73,7 +73,7 @@ const ButtonAccount = () => {
 
             {user?.user_metadata?.name ||
               user?.email?.split("@")[0] ||
-              "Account"}
+              "No User"}
 
             {isLoading ? (
               <span className="loading loading-spinner loading-xs"></span>

@@ -8,42 +8,42 @@ import { useEffect, useState } from "react"
 import { QueryClient } from "@tanstack/react-query"
 
 const Post = ({
-  post: { title, date, content, sources, opinion, id, likes, bookmarks },
+  post: { title, date, content, sources, opinion, id },
   page,
   index,
   toggleLike,
 }) => {
   const [user, setUser] = useState(null)
 
-  const supabase = createSupabaseBrowserClient()
+  // const supabase = createSupabaseBrowserClient()
 
-  useEffect(() => {
-    const loadFromServer = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
-      setUser(user)
-    }
-    loadFromServer()
-  }, [supabase])
+  // useEffect(() => {
+  //   const loadFromServer = async () => {
+  //     const {
+  //       data: { user },
+  //     } = await supabase.auth.getUser()
+  //     setUser(user)
+  //   }
+  //   loadFromServer()
+  // }, [supabase])
 
-  const likePost = like.bind(null, { postId: id, userId: user?.id })
+  // const likePost = like.bind(null, { postId: id, userId: user?.id })
 
-  const submitLike = ({ target: { dataset } }) => {
-    toggleLike({ page: Number(dataset.page), index: Number(dataset.index) })
-  }
+  // const submitLike = ({ target: { dataset } }) => {
+  //   toggleLike({ page: Number(dataset.page), index: Number(dataset.index) })
+  // }
 
-  const bookmarkPost = bookmark.bind(null, {
-    postId: id,
-    userId: user?.id,
-  })
+  // const bookmarkPost = bookmark.bind(null, {
+  //   postId: id,
+  //   userId: user?.id,
+  // // })
 
-  const userBookmarks = bookmarks.some(
-    ({ user_id: userId, post_id: postId }) =>
-      userId === user?.id && postId === id
-  )
+  // const userBookmarks = bookmarks.some(
+  //   ({ user_id: userId, post_id: postId }) =>
+  //     userId === user?.id && postId === id
+  // )
 
-  const userLikes = likes.some(({ user_id: userId }) => userId === user?.id)
+  // const userLikes = likes.some(({ user_id: userId }) => userId === user?.id)
 
   return (
     <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
@@ -62,7 +62,7 @@ const Post = ({
         </div>
       )}
       <div className="flex pt-3">
-        <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
+        {/* <div className="flex items-center gap-1 border-r-2 border-purple-300 border-solid pr-4">
           <form
             data-page={page}
             data-index={index}
@@ -84,9 +84,9 @@ const Post = ({
             ></button>
           </form>
           <p className="text-gray-500 text-sm mx-auto pt-2">{date}</p>
-        </div>
+        </div> */}
         {sources && (
-          <div className="rounded pt-1 text-gray-400 ml-4 break-words">
+          <div className="rounded pt-1 text-gray-400 break-words">
             {sources}
           </div>
         )}
