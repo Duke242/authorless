@@ -13,7 +13,10 @@ const Sidebar = () => {
           className="flex flex-col mx-auto pr-8 content-end pb-4 pl-5 backdrop-blur-md w-full pt-2"
           style={{ position: "sticky", top: 0 }}
         >
-          <Link href="/" className="btn btn-ghost btn-sm w-fit mt-4">
+          <Link
+            href="/"
+            className="btn btn-ghost btn-sm w-fit mt-4 font-normal"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

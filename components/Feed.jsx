@@ -8,6 +8,7 @@ import {
   POSTS_PER_LOAD,
   infiniteBrowserPosts,
 } from "@/libs/infiniteBrowserPosts"
+import { SpinningCircles } from "react-loading-icons"
 
 const Feed = ({ posts: initialPosts }) => {
   const [user, setUser] = useState(null)
@@ -102,7 +103,9 @@ const Feed = ({ posts: initialPosts }) => {
           ))
         )
       )}
-      {status === "pending" ? <p>Loading...</p> : null}
+      {isFetchingNextPage ? (
+        <SpinningCircles fill="#9333ea" className="mx-auto" />
+      ) : null}
       <div ref={footer}></div>
     </div>
   ) : (

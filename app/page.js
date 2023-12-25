@@ -12,12 +12,12 @@ export default async function Home() {
   //   </div>
   // )
   return (
-    <div className=" min-h-screen bg-slate-800">
+    <div className=" min-h-screen bg-slate-800 overscroll-none overflow-hidden">
       <Header />
       <main>
         <Landing />
         <Hero />
-        <Pricing />
+        {/* <Pricing /> */}
         <FAQ />
       </main>
       <Footer />
