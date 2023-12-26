@@ -4,6 +4,7 @@ import config from "@/config"
 import "./globals.css"
 import Providers from "./providers"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Inter } from "next/font/google"
 
 export const dynamic = "force-dynamic"
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       <Providers>
         <body>
           <Analytics />
+          <SpeedInsights />
           {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
           <ClientLayout>{children}</ClientLayout>
         </body>
