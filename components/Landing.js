@@ -27,8 +27,10 @@ const Landing = async () => {
         <span className="text-purple-300 font-normal">
           Authors of posts are hidden from other users.
         </span>
-        <span className="text-purple-400 font-normal"></span>
-        <span className="text-purple-500 font-bold"></span>
+        <span className="text-purple-400 font-normal">
+          Posts from different people with differnet worldviews.
+        </span>
+        <span className="text-purple-500 font-bold">No likes or authors.</span>
       </h1>
       {/* {session ? ( */}
       {/* <DashboardButton /> */}
