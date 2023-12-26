@@ -30,7 +30,7 @@ const Landing = async () => {
         <span className="text-purple-400 font-normal">
           Posts from different people with differnet worldviews.
         </span>
-        <span className="text-purple-500 font-bold">No likes or authors.</span>
+        {/* <span className="text-purple-500 font-bold">No likes or authors.</span> */}
       </h1>
       {/* {session ? ( */}
       {/* <DashboardButton /> */}
