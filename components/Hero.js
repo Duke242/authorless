@@ -31,11 +31,11 @@ const Hero = () => {
           <br /> Discover hidden stories that can fuel your own creativity and
           passions.
         </p>
-        <ol className="space-y-2 text-xl lg:text-3xl text-center text-purple-700 font-bold w-full underline">
+        {/* <ol className="space-y-2 text-xl lg:text-3xl text-center text-purple-700 font-bold w-full underline">
           <li>No politics.</li>
           <li>No bots.</li>
           <li>No trolls.</li>
-        </ol>
+        </ol> */}
         {/* <div className="w-full flex justify-center">______
           <button className="'btn btn-primary btn-wide">
             Subscribe
