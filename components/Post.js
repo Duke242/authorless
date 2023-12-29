@@ -46,7 +46,7 @@ const Post = ({
   // const userLikes = likes.some(({ user_id: userId }) => userId === user?.id)
 
   return (
-    <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)]">
+    <div className="p-6 mt-6 mb-6 mr-6 ml-6 rounded-2xl shadow-xl bg-[rgba(250,250,250,.6)] hover:scale-105 transition hover:bg-white">
       {title && (
         <h2 className="font-normal text-left text-purple-500 mb-3 font-sans">
           {title}
