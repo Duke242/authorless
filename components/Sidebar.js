@@ -35,7 +35,7 @@ const Sidebar = () => {
         </section>
         <ul className="ml-4 mt-4">
           <Link href={"compose"}>
-            <button className="flex text-md font-bold mx-auto align-center w-fit text-left text-base list-none font-normal btn-primary text-white p-3 rounded bg-purple-600 hover:bg-purple-700 hover:shadow-xl hover:transition">
+            <button className="flex text-md font-bold mx-auto align-center w-fit text-left text-base list-none font-normal btn-primary text-white p-3 rounded bg-purple-600 hover:bg-purple-400 hover:scale-105 hover:shadow-xl hover:transition">
               Compose
             </button>
           </Link>
